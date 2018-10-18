@@ -1,0 +1,50 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U funciones%b		funciones.adb		915916ff NE OO PK IL
+
+U funciones%s		funciones.ads		64ddd9dd EE NE OO PK IL
+
+D funciones.ads		20181018132338 64ddd9dd funciones%s
+D funciones.adb		20181018132706 f584cf22 funciones%b
+D system.ads		20180524051738 32a08138 system%s
+X 1 funciones.ads
+1K9*funciones 50l5 50e14 2|1b14 122l5 122t14
+3V13*sumar{integer} 3>20 3>34 9r17 2|3b13 12l8 12t13
+3i20 n1{integer} 5r20 6r22 7r23 8r22 9r32 2|3b20 9r17
+3i34 n2{integer} 5r32 6r42 7r35 8r43 9r37 2|3b34 9r22
+12V13*restar{integer} 12>21 12>35 20r17 2|14b13 23l8 23t14
+12i21 n1{integer} 14r20 15r22 16r23 17r22 18r20 20r33 2|14b21 20r17
+12i35 n2{integer} 14r31 15r42 16r34 17r43 18r31 20r38 2|14b35 20r22
+22V13*multiplicar{integer} 22>26 22>41 2|25b13 59l8 59t19
+22i26 n1{integer} 25r17 26r10 26r33 27r10 27r33 28r10 28r54 29r10 29r49 2|25b26
+. 29r27 47r48 53r11 53r39
+22i41 n2{integer} 25r6 26r21 26r53 27r21 27r53 28r21 28r49 29r21 29r54 2|25b41
+. 30r27 46r48 53r27 53r55
+33V13*dividirCociente{integer} 33>30 33>44 2|61b13 92l8 92t23
+33i30 n1{integer} 36r11 36r34 2|61b30 65r27 79r48 84r11 84r39
+33i44 n2{integer} 37r11 37r34 37r56 2|61b44 66r27 80r48 84r27 84r55
+42V13*dividirResto{integer} 42>27 42>41 2|94b13 118l8 118t20
+42i27 n1{integer} 45r11 45r34 2|94b27 97r31 98r27 111r48
+42i41 n2{integer} 46r11 46r34 46r56 2|94b41 99r27 112r48
+X 2 funciones.adb
+6i7 result{integer} 9m7 11r14
+17i7 result{integer} 20m7 22r14
+28i7 r{integer} 37r13 37r54 38m13 38r18 48r33 54r17 56r18
+29i7 c1{integer} 37r35 38r22 47r33
+30i7 c2{integer} 35r13 43m10 43r16 45r44 46r33
+64i7 result{integer} 73r13 74m13 74r23 81r33 85r17 87r18
+65i7 c1{integer} 70r10 72r13 76m10 76r16 78r44 79r33
+66i7 c2{integer} 72r19 76r21 80r33
+97i7 result{integer} 113r33
+98i7 c1{integer} 103r10 105r13 108m10 108r16 110r44 111r33 117r14
+99i7 c2{integer} 105r19 108r21 112r33
+

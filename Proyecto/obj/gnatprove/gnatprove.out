@@ -1,0 +1,26 @@
+Summary of SPARK analysis
+=========================
+
+---------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow   Interval   CodePeer      Provers   Justified   Unproved
+---------------------------------------------------------------------------------------------------------
+Data Dependencies                 .           .          .          .            .           .          .
+Flow Dependencies                 .           .          .          .            .           .          .
+Initialization                   36          36          .          .            .           .          .
+Non-Aliasing                      .           .          .          .            .           .          .
+Run-time Checks                  34           .          .          .    34 (CVC4)           .          .
+Assertions                       19           .          .          .    19 (CVC4)           .          .
+Functional Contracts              2           .          .          .     2 (CVC4)           .          .
+LSP Verification                  .           .          .          .            .           .          .
+---------------------------------------------------------------------------------------------------------
+Total                            91    36 (40%)          .          .     55 (60%)           .          .
+
+
+Analyzed 1 unit
+in unit funciones, 6 subprograms and packages out of 6 analyzed
+  funciones at funciones.ads:1 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  funciones.dividirCociente at funciones.ads:33 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (14 checks)
+  funciones.dividirResto at funciones.ads:42 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (10 checks)
+  funciones.multiplicar at funciones.ads:22 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (21 checks)
+  funciones.restar at funciones.ads:12 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (5 checks)
+  funciones.sumar at funciones.ads:3 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (5 checks)

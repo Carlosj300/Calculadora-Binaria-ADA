@@ -1,0 +1,85 @@
+V "GNAT Lib v2018"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U main%b		main.adb		cf0ba9b7 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W assertions%s		assertions.adb		assertions.ali
+W funciones%s		funciones.adb		funciones.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D assertions.ads	20181018084912 0573aace assertions%s
+D funciones.ads		20181018132338 64ddd9dd funciones%s
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D main.adb		20181018122232 26b869fe main%b
+D system.ads		20180524051738 32a08138 system%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 12|3r6 3r23
+X 6 a-textio.ads
+49K13*Text_IO 471e16 12|3w10 3r27
+263U14*Put_Line 12|95s4 98s4 101s4 104s4 107s4
+X 8 assertions.ads
+1K9*Assertions 15e15 12|1w6 1r23
+10U14*Assert_True 12|16s7 17s7 18s7 19s7 20s7 21s7 35s7 36s7 37s7 38s7 39s7
+. 40s7 54s7 55s7 56s7 57s7 70s7 71s7 72s7 73s7 86s7 87s7 88s7 89s7
+X 9 funciones.ads
+1K9*funciones 50e14 12|2w6 2r23
+3V13*sumar{integer} 12|16s19 17s19 18s19 19s19 20s19 21s19
+12V13*restar{integer} 12|35s19 36s19 37s19 38s19 39s19 40s19
+22V13*multiplicar{integer} 12|54s19 55s19 56s19 57s19
+33V13*dividirCociente{integer} 12|70s19 71s19 72s19 73s19
+42V13*dividirResto{integer} 12|86s19 87s19 88s19 89s19
+X 12 main.adb
+5U11*Main 5b11 110l5 110t9
+7U14 Test_Sumar 7b14 24l8 24t18 96s4
+10i7 n1{integer} 16r25 16r28 19r25 20r25
+11i7 n2{integer} 17r25 17r28 19r28 21r25
+12i7 n3{integer} 18r25 18r28 20r28 21r28
+26U14 Test_Restar 26b14 43l8 43t19 99s4
+29i7 n1{integer} 35r26 35r29 38r26 39r26
+30i7 n2{integer} 36r26 36r29 38r29 40r26
+31i7 n3{integer} 37r26 37r29 39r29 40r29
+45U14 Test_Multiplicar 45b14 59l8 59t24 102s4
+47i7 n1{integer} 54r34 55r34
+48i7 n2{integer} 54r31 57r31
+49i7 n3{integer} 55r31 56r31
+50i7 n4{integer} 56r34 57r34
+61U14 Test_Dividir_Cociente 61b14 75l8 75t29 105s4
+63i7 n1{integer} 70r38 71r38
+64i7 n2{integer} 70r35 73r35
+65i7 n3{integer} 71r35 72r35
+66i7 n4{integer} 72r38 73r38
+77U14 Test_Dividir_Resto 77b14 91l8 91t26 108s4
+79i7 n1{integer} 86r35 87r35
+80i7 n2{integer} 86r32 89r32
+81i7 n3{integer} 87r32 88r32
+82i7 n4{integer} 88r35 89r35
+
