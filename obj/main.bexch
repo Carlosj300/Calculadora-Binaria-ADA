@@ -1,0 +1,21 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+C:\Users\soyyo\Desktop\Calculador\default.gpr
+20181018075544
+[BOUND OBJECT FILES]
+C:\Users\soyyo\Desktop\Calculador\obj\assertions.o
+C:\Users\soyyo\Desktop\Calculador\obj\funciones.o
+C:\Users\soyyo\Desktop\Calculador\obj\main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-LC:\Users\soyyo\Desktop\Calculador\obj\
+-LC:\Users\soyyo\Desktop\Calculador\obj\
+-LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
+-Wl,--stack=0x2000000
