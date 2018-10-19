@@ -193,15 +193,15 @@ module Standard__long_integer
  use import "int".Int
 
  type long_integer =
-  < range -2147483648 2147483647 >
+  < range -9223372036854775808 9223372036854775807 >
  
  function first 
    : int =
-  ( -2147483648 )
+  ( -9223372036854775808 )
  
  function last 
    : int =
-  2147483647
+  9223372036854775807
  
  predicate in_range 
    (x : int)  =
@@ -1638,11 +1638,508 @@ module Standard__universal_integer__rep
 
 end
 
-(* Module for defining the constant "n1" defined at funciones.ads:3, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__sumar__n1
+(* Module for axiomatizing type "T1s" defined at funciones.ads:3, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__T1s
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__character
+ use        Array__Int__Standard__character
+
+ type component_type =
+  Standard__character.character
+ 
+ function first 
+   : int =
+  1
+ 
+ function last 
+   : int =
+  16
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Standard__character.map, 
+ function array_bool_eq = Array__Int__Standard__character.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for defining the constant "hex" defined at funciones.ads:3, created in Gnat2Why.Decls.Translate_Constant *)
+module Funciones__hex
+ use import "_gnatprove_standard".Main
+ use        Standard__string
+
+ function hex #"funciones.ads" 3 0 0#"model_projected" "model_trace:2768" "name:hex" 
+   : Standard__string.string
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module for axiomatizing type "binary_values" defined at funciones.ads:4, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__binary_values
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type binary_values =
+  < range 0 1 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  1
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = binary_values, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type binary_values__ref =
+  { mutable binary_values__content "model_trace:" "name:" : binary_values }
+ 
+ function binary_values__ref___projection 
+   (a : binary_values__ref) : binary_values =
+  a.binary_values__content
+ 
+ meta "model_projection" function binary_values__ref___projection
+ 
+ meta "inline : no" function binary_values__ref___projection
+ 
+ val binary_values__havoc 
+   (x : binary_values__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "binary_values" defined at funciones.ads:4, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__binary_values__rep
+ use        Funciones__binary_values
  use import "_gnatprove_standard".Main
 
- function n1 #"funciones.ads" 3 0 0#"model" "model_trace:2865" "name:n1" 
+ function to_rep 
+   (x : Funciones__binary_values.binary_values) : int =
+  (Funciones__binary_values.binary_values'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Funciones__binary_values.binary_values, 
+ predicate in_range = Funciones__binary_values.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "TbinarioD1" defined at funciones.ads:5, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__TbinarioD1
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type tbinarioD1 =
+  < range 0 31 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  31
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = tbinarioD1, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type tbinarioD1__ref =
+  { mutable tbinarioD1__content "model_trace:" "name:" : tbinarioD1 }
+ 
+ function tbinarioD1__ref___projection 
+   (a : tbinarioD1__ref) : tbinarioD1 =
+  a.tbinarioD1__content
+ 
+ meta "model_projection" function tbinarioD1__ref___projection
+ 
+ meta "inline : no" function tbinarioD1__ref___projection
+ 
+ val tbinarioD1__havoc 
+   (x : tbinarioD1__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "TbinarioD1" defined at funciones.ads:5, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__TbinarioD1__rep
+ use        Funciones__TbinarioD1
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Funciones__TbinarioD1.tbinarioD1) : int =
+  (Funciones__TbinarioD1.tbinarioD1'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Funciones__TbinarioD1.tbinarioD1, 
+ predicate in_range = Funciones__TbinarioD1.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing the array theory associated to type "TbinarioB" defined at funciones.ads:5, created in Why.Gen.Arrays.Create_Rep_Array_Theory *)
+module Array__Int__Funciones__binary_values
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Funciones__binary_values
+ use        Funciones__binary_values__rep
+
+ function index_I1_one 
+   : int =
+  1
+ 
+ type component_type =
+  Funciones__binary_values.binary_values
+ 
+ clone export "_gnatprove_standard".Array__1 with
+ type I1.t = int, 
+ predicate I1.le = Int.(<=), 
+ predicate I1.lt = Int.(<), 
+ predicate I1.gt = Int.(>), 
+ function I1.add = Int.(+), 
+ function I1.sub = Int.(-), 
+ function I1.one = index_I1_one, 
+ type component_type = component_type
+ 
+ function bool_eq 
+   (a : map) (a__first : int) (a__last : int) (b : map) (b__first : int) (b__last : int) : bool =
+  ( (if ((a__first <= a__last)) then (
+   ( (b__first <= b__last) /\ ((a__last - a__first) = (b__last - b__first)) )) else (
+   (b__first > b__last))) /\ (forall temp___idx_155   : int.
+   (if (( (a__first <= temp___idx_155) /\ (temp___idx_155 <= a__last) )) then (
+    ((Funciones__binary_values__rep.to_rep (get a temp___idx_155)) = (Funciones__binary_values__rep.to_rep (get b ((b__first - a__first) + temp___idx_155))))) else true)) )
+ 
+ axiom bool_eq_rev :
+  (forall a   b   : map.
+  (forall a__first   a__last   b__first   b__last   : int.
+   ( ((bool_eq b b__first b__last a a__first a__last) = True) -> ( (if ((a__first <= a__last)) then (
+    ( (b__first <= b__last) /\ ((a__last - a__first) = (b__last - b__first)) )) else (
+    (b__first > b__last))) /\ (forall temp___idx_155   : int.
+    (if (( (a__first <= temp___idx_155) /\ (temp___idx_155 <= a__last) )) then (
+     ((Funciones__binary_values__rep.to_rep (get a temp___idx_155)) = (Funciones__binary_values__rep.to_rep (get b ((b__first - a__first) + temp___idx_155))))) else true)) ) )))
+
+end
+
+(* Module for axiomatizing concatenation for the array theory associated to type "TbinarioB" defined at funciones.ads:5, created in Why.Gen.Arrays.Declare_Concatenation_Symbols *)
+module Array__Int__Funciones__binary_values__Concat
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Array__Int__Funciones__binary_values
+
+ function index_Index_one 
+   : int =
+  1
+ 
+ clone export "_gnatprove_standard".Array__1__Concat with
+ type component_type = Array__Int__Funciones__binary_values.component_type, 
+ type map = Array__Int__Funciones__binary_values.map, 
+ type Index.t = int, 
+ predicate Index.le = Int.(<=), 
+ predicate Index.lt = Int.(<), 
+ predicate Index.gt = Int.(>), 
+ function Index.add = Int.(+), 
+ function Index.sub = Int.(-), 
+ function Index.one = index_Index_one, 
+ function get = Array__Int__Funciones__binary_values.get
+
+end
+
+(* Module for axiomatizing comparison for the array theory associated to type "TbinarioB" defined at funciones.ads:5, created in Why.Gen.Arrays.Declare_Comparison_Symbols *)
+module Array__Int__Funciones__binary_values_Comp
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Funciones__binary_values__rep
+ use        Array__Int__Funciones__binary_values
+
+ function index_Index_one 
+   : int =
+  1
+ 
+ clone export "ada__model".Array_Int_Rep_Comparison_Axiom with
+ type component_type = Array__Int__Funciones__binary_values.component_type, 
+ function to_rep = Funciones__binary_values__rep.to_rep, 
+ type map = Array__Int__Funciones__binary_values.map, 
+ type Index.t = int, 
+ predicate Index.le = Int.(<=), 
+ predicate Index.lt = Int.(<), 
+ predicate Index.gt = Int.(>), 
+ function Index.add = Int.(+), 
+ function Index.sub = Int.(-), 
+ function Index.one = index_Index_one, 
+ function get = Array__Int__Funciones__binary_values.get, 
+ function bool_eq = Array__Int__Funciones__binary_values.bool_eq
+
+end
+
+(* Module for axiomatizing type "TbinarioB" defined at funciones.ads:5, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__TbinarioB
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__integer
+ use        Standard__integer__rep
+ use        Funciones__binary_values
+ use        Funciones__TbinarioD1
+ use        Array__Int__Funciones__binary_values
+
+ type component_type =
+  Funciones__binary_values.binary_values
+ 
+ function index_1_id 
+   (x : int) : int =
+  x
+ 
+ clone export "ada__model".Unconstr_Array with
+ type map = Array__Int__Funciones__binary_values.map, 
+ function array_bool_eq = Array__Int__Funciones__binary_values.bool_eq, 
+ type index_base_type = Standard__integer.integer, 
+ type index_rep_type = int, 
+ function to_rep = Standard__integer__rep.to_rep, 
+ function rep_to_int = index_1_id, 
+ predicate in_range_base = Standard__integer.in_range, 
+ predicate index_dynamic_property = Funciones__TbinarioD1.dynamic_property, 
+ predicate index_rep_le = Int.(<=)
+ 
+ type tbinarioB =
+  __t
+ 
+ meta "model_projection" function to_array
+ 
+ meta "inline : no" function to_array
+ 
+ meta "model_projection" function first
+ 
+ meta "inline : no" function first
+ 
+ meta "model_projection" function last
+ 
+ meta "inline : no" function last
+ 
+ type tbinarioB__ref =
+  { mutable tbinarioB__content "model_trace:" "name:" : tbinarioB }
+ 
+ function tbinarioB__ref___projection 
+   (a : tbinarioB__ref) : tbinarioB =
+  a.tbinarioB__content
+ 
+ meta "model_projection" function tbinarioB__ref___projection
+ 
+ meta "inline : no" function tbinarioB__ref___projection
+ 
+ val tbinarioB__havoc 
+   (x : tbinarioB__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "binario" defined at funciones.ads:5, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__binario
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+
+ type component_type =
+  Funciones__binary_values.binary_values
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  31
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Funciones__binary_values.map, 
+ function array_bool_eq = Array__Int__Funciones__binary_values.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for axiomatizing type "ThbinarioD1" defined at funciones.ads:6, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__ThbinarioD1
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type thbinarioD1 =
+  < range 0 15 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  15
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = thbinarioD1, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type thbinarioD1__ref =
+  { mutable thbinarioD1__content "model_trace:" "name:" : thbinarioD1 }
+ 
+ function thbinarioD1__ref___projection 
+   (a : thbinarioD1__ref) : thbinarioD1 =
+  a.thbinarioD1__content
+ 
+ meta "model_projection" function thbinarioD1__ref___projection
+ 
+ meta "inline : no" function thbinarioD1__ref___projection
+ 
+ val thbinarioD1__havoc 
+   (x : thbinarioD1__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "ThbinarioD1" defined at funciones.ads:6, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__ThbinarioD1__rep
+ use        Funciones__ThbinarioD1
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Funciones__ThbinarioD1.thbinarioD1) : int =
+  (Funciones__ThbinarioD1.thbinarioD1'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Funciones__ThbinarioD1.thbinarioD1, 
+ predicate in_range = Funciones__ThbinarioD1.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "ThbinarioB" defined at funciones.ads:6, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__ThbinarioB
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__integer
+ use        Standard__integer__rep
+ use        Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+ use        Funciones__ThbinarioD1
+
+ type component_type =
+  Funciones__binary_values.binary_values
+ 
+ function index_1_id 
+   (x : int) : int =
+  x
+ 
+ clone export "ada__model".Unconstr_Array with
+ type map = Array__Int__Funciones__binary_values.map, 
+ function array_bool_eq = Array__Int__Funciones__binary_values.bool_eq, 
+ type index_base_type = Standard__integer.integer, 
+ type index_rep_type = int, 
+ function to_rep = Standard__integer__rep.to_rep, 
+ function rep_to_int = index_1_id, 
+ predicate in_range_base = Standard__integer.in_range, 
+ predicate index_dynamic_property = Funciones__ThbinarioD1.dynamic_property, 
+ predicate index_rep_le = Int.(<=)
+ 
+ type thbinarioB =
+  __t
+ 
+ meta "model_projection" function to_array
+ 
+ meta "inline : no" function to_array
+ 
+ meta "model_projection" function first
+ 
+ meta "inline : no" function first
+ 
+ meta "model_projection" function last
+ 
+ meta "inline : no" function last
+ 
+ type thbinarioB__ref =
+  { mutable thbinarioB__content "model_trace:" "name:" : thbinarioB }
+ 
+ function thbinarioB__ref___projection 
+   (a : thbinarioB__ref) : thbinarioB =
+  a.thbinarioB__content
+ 
+ meta "model_projection" function thbinarioB__ref___projection
+ 
+ meta "inline : no" function thbinarioB__ref___projection
+ 
+ val thbinarioB__havoc 
+   (x : thbinarioB__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "hbinario" defined at funciones.ads:6, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__hbinario
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+
+ type component_type =
+  Funciones__binary_values.binary_values
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  15
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Funciones__binary_values.map, 
+ function array_bool_eq = Array__Int__Funciones__binary_values.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for defining the constant "n1" defined at funciones.ads:15, created in Gnat2Why.Decls.Translate_Constant *)
+module Funciones__dectobin__n1
+ use import "_gnatprove_standard".Main
+
+ function n1 #"funciones.ads" 15 0 0#"model" "model_trace:2827" "name:n1" 
    : int
  
  function attr__ATTRIBUTE_ADDRESS 
@@ -1650,18 +2147,31 @@ module Funciones__sumar__n1
 
 end
 
-(* Module giving an empty axiom for the entity "n1" defined at funciones.ads:3, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__sumar__n1___axiom
+(* Module giving an empty axiom for the entity "n1" defined at funciones.ads:15, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectobin__n1___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining the constant "n2" defined at funciones.ads:3, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__sumar__n2
+(* Module for possibly declaring a logic function for "dectobin" defined at funciones.ads:15, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Funciones__dectobin
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Funciones__binary_values
+
+ function dectobin 
+   (n1 : int) : Array__Int__Funciones__binary_values.map
+ 
+ predicate dectobin__function_guard 
+   (result : Array__Int__Funciones__binary_values.map) (n1 : int) 
+
+end
+
+(* Module for defining the constant "n1" defined at funciones.ads:24, created in Gnat2Why.Decls.Translate_Constant *)
+module Funciones__dectohex16__n1
  use import "_gnatprove_standard".Main
 
- function n2 #"funciones.ads" 3 0 0#"model" "model_trace:2874" "name:n2" 
+ function n1 #"funciones.ads" 24 0 0#"model" "name:n1" "model_trace:2853" 
    : int
  
  function attr__ATTRIBUTE_ADDRESS 
@@ -1669,399 +2179,570 @@ module Funciones__sumar__n2
 
 end
 
-(* Module giving an empty axiom for the entity "n2" defined at funciones.ads:3, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__sumar__n2___axiom
+(* Module giving an empty axiom for the entity "n1" defined at funciones.ads:24, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectohex16__n1___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "sumar" defined at funciones.ads:3, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
-module Funciones__sumar
+(* Module for possibly declaring a logic function for "dectohex16" defined at funciones.ads:24, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Funciones__dectohex16
  use import "_gnatprove_standard".Main
+ use        Standard__string
 
- function sumar 
-   (n1 : int) (n2 : int) : int
+ function dectohex16 
+   (n1 : int) : Standard__string.string
  
- predicate sumar__function_guard 
-   (result : int) (n1 : int) (n2 : int) 
+ predicate dectohex16__function_guard 
+   (result : Standard__string.string) (n1 : int) 
 
 end
 
-(* Module for defining the constant "n1" defined at funciones.ads:12, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__restar__n1
+(* Module for axiomatizing type "T1b" defined at funciones.adb:95, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectobin__T1b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type t1b =
+  < range 0 15 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  15
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = t1b, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type t1b__ref =
+  { mutable t1b__content "model_trace:" "name:" : t1b }
+ 
+ function t1b__ref___projection 
+   (a : t1b__ref) : t1b =
+  a.t1b__content
+ 
+ meta "model_projection" function t1b__ref___projection
+ 
+ meta "inline : no" function t1b__ref___projection
+ 
+ val t1b__havoc 
+   (x : t1b__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "T1b" defined at funciones.adb:95, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectobin__T1b__rep
+ use        Funciones__dectobin__T1b
  use import "_gnatprove_standard".Main
 
- function n1 #"funciones.ads" 12 0 0#"model" "name:n1" "model_trace:2938" 
-   : int
+ function to_rep 
+   (x : Funciones__dectobin__T1b.t1b) : int =
+  (Funciones__dectobin__T1b.t1b'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Funciones__dectobin__T1b.t1b, 
+ predicate in_range = Funciones__dectobin__T1b.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "T2b" defined at funciones.adb:95, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectobin__T2b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+
+ type component_type =
+  Funciones__binary_values.binary_values
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  15
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Funciones__binary_values.map, 
+ function array_bool_eq = Array__Int__Funciones__binary_values.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for axiomatizing type "T6b" defined at funciones.adb:112, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectobin__L_1__L5b__T6b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__integer
+ use        Standard__integer__rep
+
+ type t6b =
+  Standard__integer.integer
+ 
+ predicate dynamic_property 
+   (first_int : int) (last_int : int) (x : int)  =
+  ( (first_int <= x) /\ (x <= last_int) )
+ 
+ clone export "ada__model".Dynamic_Discrete with
+ type t = t6b, 
+ type rep_type = int, 
+ function base_to_rep = Standard__integer__rep.to_rep, 
+ function base_of_rep = Standard__integer__rep.of_rep, 
+ predicate dynamic_property = dynamic_property
+ 
+ type t6b__ref =
+  { mutable t6b__content "model_trace:" "name:" : t6b }
+ 
+ function t6b__ref___projection 
+   (a : t6b__ref) : t6b =
+  a.t6b__content
+ 
+ meta "model_projection" function t6b__ref___projection
+ 
+ meta "inline : no" function t6b__ref___projection
+ 
+ val t6b__havoc 
+   (x : t6b__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "T4b" defined at funciones.adb:112, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectobin__L_1__L3b__T4b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__integer
+ use        Standard__integer__rep
+
+ type t4b =
+  Standard__integer.integer
+ 
+ predicate dynamic_property 
+   (first_int : int) (last_int : int) (x : int)  =
+  ( (first_int <= x) /\ (x <= last_int) )
+ 
+ clone export "ada__model".Dynamic_Discrete with
+ type t = t4b, 
+ type rep_type = int, 
+ function base_to_rep = Standard__integer__rep.to_rep, 
+ function base_of_rep = Standard__integer__rep.of_rep, 
+ predicate dynamic_property = dynamic_property
+ 
+ type t4b__ref =
+  { mutable t4b__content "model_trace:" "name:" : t4b }
+ 
+ function t4b__ref___projection 
+   (a : t4b__ref) : t4b =
+  a.t4b__content
+ 
+ meta "model_projection" function t4b__ref___projection
+ 
+ meta "inline : no" function t4b__ref___projection
+ 
+ val t4b__havoc 
+   (x : t4b__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "TTresSP1" defined at funciones.adb:142, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__TTresSP1
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type tTresSP1 =
+  < range 1 4 >
+ 
+ function first 
+   : int =
+  1
+ 
+ function last 
+   : int =
+  4
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = tTresSP1, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type tTresSP1__ref =
+  { mutable tTresSP1__content "model_trace:" "name:" : tTresSP1 }
+ 
+ function tTresSP1__ref___projection 
+   (a : tTresSP1__ref) : tTresSP1 =
+  a.tTresSP1__content
+ 
+ meta "model_projection" function tTresSP1__ref___projection
+ 
+ meta "inline : no" function tTresSP1__ref___projection
+ 
+ val tTresSP1__havoc 
+   (x : tTresSP1__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "TTresSP1" defined at funciones.adb:142, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__TTresSP1__rep
+ use        Funciones__dectohex16__TTresSP1
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Funciones__dectohex16__TTresSP1.tTresSP1) : int =
+  (Funciones__dectohex16__TTresSP1.tTresSP1'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Funciones__dectohex16__TTresSP1.tTresSP1, 
+ predicate in_range = Funciones__dectohex16__TTresSP1.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "TresS" defined at funciones.adb:142, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__TresS
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__character
+ use        Array__Int__Standard__character
+
+ type component_type =
+  Standard__character.character
+ 
+ function first 
+   : int =
+  1
+ 
+ function last 
+   : int =
+  4
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Standard__character.map, 
+ function array_bool_eq = Array__Int__Standard__character.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for axiomatizing type "T8b" defined at funciones.adb:150, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__T8b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type t8b =
+  < range 1 4 >
+ 
+ function first 
+   : int =
+  1
+ 
+ function last 
+   : int =
+  4
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = t8b, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type t8b__ref =
+  { mutable t8b__content "model_trace:" "name:" : t8b }
+ 
+ function t8b__ref___projection 
+   (a : t8b__ref) : t8b =
+  a.t8b__content
+ 
+ meta "model_projection" function t8b__ref___projection
+ 
+ meta "inline : no" function t8b__ref___projection
+ 
+ val t8b__havoc 
+   (x : t8b__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "T8b" defined at funciones.adb:150, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__T8b__rep
+ use        Funciones__dectohex16__T8b
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Funciones__dectohex16__T8b.t8b) : int =
+  (Funciones__dectohex16__T8b.t8b'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Funciones__dectohex16__T8b.t8b, 
+ predicate in_range = Funciones__dectohex16__T8b.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "T9b" defined at funciones.adb:150, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__T9b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__character
+ use        Array__Int__Standard__character
+
+ type component_type =
+  Standard__character.character
+ 
+ function first 
+   : int =
+  1
+ 
+ function last 
+   : int =
+  4
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Standard__character.map, 
+ function array_bool_eq = Array__Int__Standard__character.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for axiomatizing type "T13b" defined at funciones.adb:187, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__L_2__L12b__T13b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__integer
+ use        Standard__integer__rep
+
+ type t13b =
+  Standard__integer.integer
+ 
+ predicate dynamic_property 
+   (first_int : int) (last_int : int) (x : int)  =
+  ( (first_int <= x) /\ (x <= last_int) )
+ 
+ clone export "ada__model".Dynamic_Discrete with
+ type t = t13b, 
+ type rep_type = int, 
+ function base_to_rep = Standard__integer__rep.to_rep, 
+ function base_of_rep = Standard__integer__rep.of_rep, 
+ predicate dynamic_property = dynamic_property
+ 
+ type t13b__ref =
+  { mutable t13b__content "model_trace:" "name:" : t13b }
+ 
+ function t13b__ref___projection 
+   (a : t13b__ref) : t13b =
+  a.t13b__content
+ 
+ meta "model_projection" function t13b__ref___projection
+ 
+ meta "inline : no" function t13b__ref___projection
+ 
+ val t13b__havoc 
+   (x : t13b__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "T11b" defined at funciones.adb:187, created in Gnat2Why.Types.Translate_Type *)
+module Funciones__dectohex16__L_2__L10b__T11b
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__integer
+ use        Standard__integer__rep
+
+ type t11b =
+  Standard__integer.integer
+ 
+ predicate dynamic_property 
+   (first_int : int) (last_int : int) (x : int)  =
+  ( (first_int <= x) /\ (x <= last_int) )
+ 
+ clone export "ada__model".Dynamic_Discrete with
+ type t = t11b, 
+ type rep_type = int, 
+ function base_to_rep = Standard__integer__rep.to_rep, 
+ function base_of_rep = Standard__integer__rep.of_rep, 
+ predicate dynamic_property = dynamic_property
+ 
+ type t11b__ref =
+  { mutable t11b__content "model_trace:" "name:" : t11b }
+ 
+ function t11b__ref___projection 
+   (a : t11b__ref) : t11b =
+  a.t11b__content
+ 
+ meta "model_projection" function t11b__ref___projection
+ 
+ meta "inline : no" function t11b__ref___projection
+ 
+ val t11b__havoc 
+   (x : t11b__ref) : unit
+  writes {x}
+
+end
+(* Module for defining a ref holding the value of variable "res" defined at funciones.adb:88, created in Gnat2Why.Decls.Translate_Variable *)
+module Funciones__dectobin__res
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Funciones__binary_values
+
+ val res #"funciones.adb" 88 0 0#"model_projected" "model_trace:2326" "name:res"  : Array__Int__Funciones__binary_values.map__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "n1" defined at funciones.ads:12, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__restar__n1___axiom
+(* Module giving an empty axiom for the entity "res" defined at funciones.adb:88, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectobin__res___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining the constant "n2" defined at funciones.ads:12, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__restar__n2
+(* Module for defining a ref holding the value of variable "pos" defined at funciones.adb:89, created in Gnat2Why.Decls.Translate_Variable *)
+module Funciones__dectobin__pos
  use import "_gnatprove_standard".Main
 
- function n2 #"funciones.ads" 12 0 0#"model" "name:n2" "model_trace:2947" 
-   : int
+ val pos #"funciones.adb" 89 0 0#"model_projected" "model_trace:2335" "name:pos"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "n2" defined at funciones.ads:12, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__restar__n2___axiom
+(* Module giving an empty axiom for the entity "pos" defined at funciones.adb:89, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectobin__pos___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "restar" defined at funciones.ads:12, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
-module Funciones__restar
+(* Module for defining a ref holding the value of variable "temp" defined at funciones.adb:90, created in Gnat2Why.Decls.Translate_Variable *)
+module Funciones__dectobin__temp
  use import "_gnatprove_standard".Main
 
- function restar 
-   (n1 : int) (n2 : int) : int
- 
- predicate restar__function_guard 
-   (result : int) (n1 : int) (n2 : int) 
-
-end
-
-(* Module for defining the constant "n1" defined at funciones.ads:22, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__multiplicar__n1
- use import "_gnatprove_standard".Main
-
- function n1 #"funciones.ads" 22 0 0#"model" "name:n1" "model_trace:3021" 
-   : int
+ val temp #"funciones.adb" 90 0 0#"model_projected" "model_trace:2345" "name:temp"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "n1" defined at funciones.ads:22, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__multiplicar__n1___axiom
+(* Module giving an empty axiom for the entity "temp" defined at funciones.adb:90, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectobin__temp___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining the constant "n2" defined at funciones.ads:22, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__multiplicar__n2
+(* Module for defining a ref holding the value of variable "res" defined at funciones.adb:142, created in Gnat2Why.Decls.Translate_Variable *)
+module Funciones__dectohex16__res
  use import "_gnatprove_standard".Main
+ use        Array__Int__Standard__character
 
- function n2 #"funciones.ads" 22 0 0#"model" "name:n2" "model_trace:3030" 
-   : int
+ val res #"funciones.adb" 142 0 0#"model_projected" "name:res" "model_trace:2493"  : Array__Int__Standard__character.map__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "n2" defined at funciones.ads:22, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__multiplicar__n2___axiom
+(* Module giving an empty axiom for the entity "res" defined at funciones.adb:142, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectohex16__res___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "multiplicar" defined at funciones.ads:22, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
-module Funciones__multiplicar
+(* Module for defining a ref holding the value of variable "pos" defined at funciones.adb:143, created in Gnat2Why.Decls.Translate_Variable *)
+module Funciones__dectohex16__pos
  use import "_gnatprove_standard".Main
 
- function multiplicar 
-   (n1 : int) (n2 : int) : int
- 
- predicate multiplicar__function_guard 
-   (result : int) (n1 : int) (n2 : int) 
-
-end
-
-(* Module for defining the constant "n1" defined at funciones.ads:33, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__dividircociente__n1
- use import "_gnatprove_standard".Main
-
- function n1 #"funciones.ads" 33 0 0#"model" "name:n1" "model_trace:3124" 
-   : int
+ val pos #"funciones.adb" 143 0 0#"model_projected" "name:pos" "model_trace:2507"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "n1" defined at funciones.ads:33, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividircociente__n1___axiom
+(* Module giving an empty axiom for the entity "pos" defined at funciones.adb:143, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectohex16__pos___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining the constant "n2" defined at funciones.ads:33, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__dividircociente__n2
+(* Module for defining a ref holding the value of variable "temp" defined at funciones.adb:144, created in Gnat2Why.Decls.Translate_Variable *)
+module Funciones__dectohex16__temp
  use import "_gnatprove_standard".Main
 
- function n2 #"funciones.ads" 33 0 0#"model" "name:n2" "model_trace:3133" 
-   : int
+ val temp #"funciones.adb" 144 0 0#"model_projected" "name:temp" "model_trace:2517"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "n2" defined at funciones.ads:33, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividircociente__n2___axiom
+(* Module giving an empty axiom for the entity "temp" defined at funciones.adb:144, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectohex16__temp___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "dividircociente" defined at funciones.ads:33, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
-module Funciones__dividircociente
+(* Module for defining a ref holding the value of variable "let" defined at funciones.adb:145, created in Gnat2Why.Decls.Translate_Variable *)
+module Funciones__dectohex16__let
  use import "_gnatprove_standard".Main
 
- function dividircociente 
-   (n1 : int) (n2 : int) : int
- 
- predicate dividircociente__function_guard 
-   (result : int) (n1 : int) (n2 : int) 
-
-end
-
-(* Module for defining the constant "n1" defined at funciones.ads:42, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__dividirresto__n1
- use import "_gnatprove_standard".Main
-
- function n1 #"funciones.ads" 42 0 0#"model" "name:n1" "model_trace:3183" 
-   : int
+ val let__ #"funciones.adb" 145 0 0#"model_projected" "model_trace:2527" "name:let"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "n1" defined at funciones.ads:42, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividirresto__n1___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining the constant "n2" defined at funciones.ads:42, created in Gnat2Why.Decls.Translate_Constant *)
-module Funciones__dividirresto__n2
- use import "_gnatprove_standard".Main
-
- function n2 #"funciones.ads" 42 0 0#"model" "name:n2" "model_trace:3192" 
-   : int
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "n2" defined at funciones.ads:42, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividirresto__n2___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for possibly declaring a logic function for "dividirresto" defined at funciones.ads:42, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
-module Funciones__dividirresto
- use import "_gnatprove_standard".Main
-
- function dividirresto 
-   (n1 : int) (n2 : int) : int
- 
- predicate dividirresto__function_guard 
-   (result : int) (n1 : int) (n2 : int) 
-
-end
-(* Module for defining a ref holding the value of variable "result" defined at funciones.adb:6, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__sumar__result
- use import "_gnatprove_standard".Main
-
- val result__ #"funciones.adb" 6 0 0#"model_projected" "model_trace:2335" "name:result"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "result" defined at funciones.adb:6, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__sumar__result___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "result" defined at funciones.adb:17, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__restar__result
- use import "_gnatprove_standard".Main
-
- val result__ #"funciones.adb" 17 0 0#"model_projected" "name:result" "model_trace:2384"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "result" defined at funciones.adb:17, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__restar__result___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "r" defined at funciones.adb:28, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__multiplicar__r
- use import "_gnatprove_standard".Main
-
- val r #"funciones.adb" 28 0 0#"model_projected" "model_trace:2433" "name:r"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "r" defined at funciones.adb:28, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__multiplicar__r___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "c1" defined at funciones.adb:29, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__multiplicar__c1
- use import "_gnatprove_standard".Main
-
- val c1 #"funciones.adb" 29 0 0#"model_projected" "model_trace:2443" "name:c1"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "c1" defined at funciones.adb:29, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__multiplicar__c1___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "c2" defined at funciones.adb:30, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__multiplicar__c2
- use import "_gnatprove_standard".Main
-
- val c2 #"funciones.adb" 30 0 0#"model_projected" "model_trace:2454" "name:c2"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "c2" defined at funciones.adb:30, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__multiplicar__c2___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "result" defined at funciones.adb:64, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__dividircociente__result
- use import "_gnatprove_standard".Main
-
- val result__ #"funciones.adb" 64 0 0#"model_projected" "name:result" "model_trace:2586"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "result" defined at funciones.adb:64, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividircociente__result___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "c1" defined at funciones.adb:65, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__dividircociente__c1
- use import "_gnatprove_standard".Main
-
- val c1 #"funciones.adb" 65 0 0#"model_projected" "name:c1" "model_trace:2596"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "c1" defined at funciones.adb:65, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividircociente__c1___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "c2" defined at funciones.adb:66, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__dividircociente__c2
- use import "_gnatprove_standard".Main
-
- val c2 #"funciones.adb" 66 0 0#"model_projected" "name:c2" "model_trace:2607"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "c2" defined at funciones.adb:66, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividircociente__c2___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "c1" defined at funciones.adb:97, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__dividirresto__c1
- use import "_gnatprove_standard".Main
-
- val c1 #"funciones.adb" 97 0 0#"model_projected" "name:c1" "model_trace:2738"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "c1" defined at funciones.adb:97, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividirresto__c1___axiom
- use import "_gnatprove_standard".Main
-
-
-end
-
-(* Module for defining a ref holding the value of variable "c2" defined at funciones.adb:98, created in Gnat2Why.Decls.Translate_Variable *)
-module Funciones__dividirresto__c2
- use import "_gnatprove_standard".Main
-
- val c2 #"funciones.adb" 98 0 0#"model_projected" "name:c2" "model_trace:2749"  : int__ref 
- 
- function attr__ATTRIBUTE_ADDRESS 
-   : int
-
-end
-
-(* Module giving an empty axiom for the entity "c2" defined at funciones.adb:98, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividirresto__c2___axiom
+(* Module giving an empty axiom for the entity "let" defined at funciones.adb:145, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectohex16__let___axiom
  use import "_gnatprove_standard".Main
 
 
@@ -2429,184 +3110,293 @@ module Standard__universal_integer___axiom
 
 end
 
-(* Module for defining the loop exit exception for the loop "L_1" defined at funciones.adb:35, created in Gnat2Why.Decls.Translate_Loop_Entity *)
-module Funciones__multiplicar__L_1
+(* Module for defining a value for string literal  defined at funciones.ads:3, created in Gnat2Why.Expr.Transform_String_Literal *)
+module Temp___String_Literal_154
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__character
+ use        Standard__character__rep
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+
+ function temp___String_Literal_154 
+   (__void_param : unit) : Array__Int__Standard__character.map
+ 
+ axiom temp___String_Literal_154__def_axiom :
+  (forall __void_param   : unit [(temp___String_Literal_154 __void_param)].
+   ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 1)) = 48) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 2)) = 49) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 3)) = 50) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 4)) = 51) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 5)) = 52) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 6)) = 53) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 7)) = 54) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 8)) = 55) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 9)) = 56) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 10)) = 57) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 11)) = 65) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 12)) = 66) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 13)) = 67) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 14)) = 68) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 15)) = 69) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (temp___String_Literal_154 __void_param) 16)) = 70) ))
+
+end
+
+(* Module for defining the loop exit exception for the loop "L_1" defined at funciones.adb:97, created in Gnat2Why.Decls.Translate_Loop_Entity *)
+module Funciones__dectobin__L_1
  use import "_gnatprove_standard".Main
 
  exception L_1
 
 end
 
-(* Module giving an empty axiom for the entity "L_1" defined at funciones.adb:35, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__multiplicar__L_1___axiom
+(* Module giving an empty axiom for the entity "L_1" defined at funciones.adb:97, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectobin__L_1___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining the loop exit exception for the loop "L_2" defined at funciones.adb:72, created in Gnat2Why.Decls.Translate_Loop_Entity *)
-module Funciones__dividircociente__L_2
+(* Module for defining the loop exit exception for the loop "L_2" defined at funciones.adb:152, created in Gnat2Why.Decls.Translate_Loop_Entity *)
+module Funciones__dectohex16__L_2
  use import "_gnatprove_standard".Main
 
  exception L_2
 
 end
 
-(* Module giving an empty axiom for the entity "L_2" defined at funciones.adb:72, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividircociente__L_2___axiom
+(* Module giving an empty axiom for the entity "L_2" defined at funciones.adb:152, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Funciones__dectohex16__L_2___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining the loop exit exception for the loop "L_3" defined at funciones.adb:104, created in Gnat2Why.Decls.Translate_Loop_Entity *)
-module Funciones__dividirresto__L_3
- use import "_gnatprove_standard".Main
-
- exception L_3
-
-end
-
-(* Module giving an empty axiom for the entity "L_3" defined at funciones.adb:104, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Funciones__dividirresto__L_3___axiom
+(* Module giving axioms for type "T1s" defined at funciones.ads:3, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__T1s___axiom
  use import "_gnatprove_standard".Main
 
 
 end
-(* Module for declaring a program function (and possibly an axiom) for "sumar" defined at funciones.ads:3, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
-module Funciones__sumar___axiom
+
+(* Module giving axioms for type "binary_values" defined at funciones.ads:4, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__binary_values___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Funciones__binary_values
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_160 : int) (temp___is_init_156 : bool) (temp___skip_constant_157 : bool) (temp___do_toplevel_158 : bool) (temp___do_typ_inv_159 : bool)  =
+  (if (( temp___is_init_156 \/ (Funciones__binary_values.first <= Funciones__binary_values.last) )) then (
+   (Funciones__binary_values.dynamic_property Funciones__binary_values.first Funciones__binary_values.last temp___expr_160)) else true)
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_161 : int) (temp___skip_top_level_162 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "TbinarioD1" defined at funciones.ads:5, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__TbinarioD1___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "TbinarioB" defined at funciones.ads:5, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__TbinarioB___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "binario" defined at funciones.ads:5, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__binario___axiom
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_167 : Array__Int__Funciones__binary_values.map) (temp___is_init_163 : bool) (temp___skip_constant_164 : bool) (temp___do_toplevel_165 : bool) (temp___do_typ_inv_166 : bool)  =
+  true
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_169 : Array__Int__Funciones__binary_values.map) (temp___skip_top_level_170 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "ThbinarioD1" defined at funciones.ads:6, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__ThbinarioD1___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "ThbinarioB" defined at funciones.ads:6, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__ThbinarioB___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "hbinario" defined at funciones.ads:6, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__hbinario___axiom
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_177 : Array__Int__Funciones__binary_values.map) (temp___is_init_173 : bool) (temp___skip_constant_174 : bool) (temp___do_toplevel_175 : bool) (temp___do_typ_inv_176 : bool)  =
+  true
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_179 : Array__Int__Funciones__binary_values.map) (temp___skip_top_level_180 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "T1b" defined at funciones.adb:95, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectobin__T1b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T2b" defined at funciones.adb:95, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectobin__T2b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T6b" defined at funciones.adb:112, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectobin__L_1__L5b__T6b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T4b" defined at funciones.adb:112, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectobin__L_1__L3b__T4b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "TTresSP1" defined at funciones.adb:142, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectohex16__TTresSP1___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "TresS" defined at funciones.adb:142, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectohex16__TresS___axiom
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_191 : Array__Int__Standard__character.map) (temp___is_init_187 : bool) (temp___skip_constant_188 : bool) (temp___do_toplevel_189 : bool) (temp___do_typ_inv_190 : bool)  =
+  true
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_193 : Array__Int__Standard__character.map) (temp___skip_top_level_194 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "T8b" defined at funciones.adb:150, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectohex16__T8b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T9b" defined at funciones.adb:150, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectohex16__T9b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T13b" defined at funciones.adb:187, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectohex16__L_2__L12b__T13b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T11b" defined at funciones.adb:187, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Funciones__dectohex16__L_2__L10b__T11b___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for declaring an abstract function for the aggregate at funciones.adb:95, created in Gnat2Why.Expr.Transform_Aggregate.Generate_Logic_Function *)
+module Temp_____aggregate_def_197
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Funciones__binary_values
+
+ function temp_____aggregate_def_197 
+   (temp___199 : int) : Array__Int__Funciones__binary_values.map
+
+end
+
+(* Module for declaring an abstract function for the aggregate at funciones.adb:150, created in Gnat2Why.Expr.Transform_Aggregate.Generate_Logic_Function *)
+module Temp_____aggregate_def_207
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Standard__character
+
+ function temp_____aggregate_def_207 
+   (temp___209 : int) : Array__Int__Standard__character.map
+
+end
+(* Module for defining the value of constant "hex" defined at funciones.ads:3, created in Gnat2Why.Decls.Translate_Constant_Value *)
+module Funciones__hex___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__string
+ use        Funciones__hex
+ use        Temp___String_Literal_154
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+
+ axiom hex__def_axiom :
+  ((Funciones__hex.hex ) = (Standard__string.of_array (Temp___String_Literal_154.temp___String_Literal_154 ()) 1 16))
+
+end
+
+(* Module for declaring a program function (and possibly an axiom) for "dectobin" defined at funciones.ads:15, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Funciones__dectobin___axiom
  use import "_gnatprove_standard".Main
  use import "int".Int
  use        Standard__integer___axiom
- use        Funciones__sumar
+ use        Funciones__dectobin
+ use        Funciones__hbinario___axiom
+ use        Array__Int__Funciones__binary_values
 
- val sumar 
-   (n1 : int) (n2 : int) : int
-  requires {  ( (if (( (n1 >= 0) /\ (n2 >= 0) )) then (
-   (n1 = (2147483647 - n2))) else (
-   true)) /\ (if (( (n1 <= 0) /\ (n2 <= 0) )) then (
-   (n1 = (( -2147483648 ) - n2))) else (
-   true)) ) }
-  ensures {  ( ( (result = (Funciones__sumar.sumar n1 n2)) /\ (Funciones__sumar.sumar__function_guard result n1 n2) ) /\ ( (Standard__integer___axiom.dynamic_invariant result True False True True) /\ (result = (n1 + n2)) ) ) }
+ val dectobin 
+   (n1 : int) : Array__Int__Funciones__binary_values.map
+  requires {  (n1 >= 0) }
+  ensures {  ( ( (result = (Funciones__dectobin.dectobin n1)) /\ (Funciones__dectobin.dectobin__function_guard result n1) ) /\ (Funciones__hbinario___axiom.dynamic_invariant result True False True True) ) }
  
- axiom sumar__post_axiom :
-  (forall n1   n2   : int [(Funciones__sumar.sumar n1 n2)].
-   ( ( ( (Standard__integer___axiom.dynamic_invariant n1 True True True True) /\ (Standard__integer___axiom.dynamic_invariant n2 True True True True) ) /\ ( (if (( (n1 >= 0) /\ (n2 >= 0) )) then (
-    (n1 = (2147483647 - n2))) else (
-    true)) /\ (if (( (n1 <= 0) /\ (n2 <= 0) )) then (
-    (n1 = (( -2147483648 ) - n2))) else (
-    true)) ) ) -> (let result = (Funciones__sumar.sumar n1 n2) in (
-    (if ((Funciones__sumar.sumar__function_guard result n1 n2)) then (
-     ( ( (result = (n1 + n2)) /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) /\ true )) else true)))
+ axiom dectobin__post_axiom :
+  (forall n1   : int [(Funciones__dectobin.dectobin n1)].
+   ( ( (Standard__integer___axiom.dynamic_invariant n1 True True True True) /\ (n1 >= 0) ) -> (let result = (Funciones__dectobin.dectobin n1) in (
+    (if ((Funciones__dectobin.dectobin__function_guard result n1)) then (
+     ( ( true /\ (Funciones__hbinario___axiom.dynamic_invariant result True False True True) ) /\ true )) else true)))
     ))
 
 end
 
-(* Module for declaring a program function (and possibly an axiom) for "restar" defined at funciones.ads:12, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
-module Funciones__restar___axiom
+(* Module for declaring a program function (and possibly an axiom) for "dectohex16" defined at funciones.ads:24, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Funciones__dectohex16___axiom
  use import "_gnatprove_standard".Main
  use import "int".Int
+ use        Standard__string
  use        Standard__integer___axiom
- use        Funciones__restar
+ use        Standard__string___axiom
+ use        Funciones__dectohex16
 
- val restar 
-   (n1 : int) (n2 : int) : int
-  requires {  ( ( (if (( (n1 > 0) /\ (n2 < 0) )) then (
-   (n1 = (2147483647 + n2))) else (
-   true)) /\ (if (( (n1 < 0) /\ (n2 > 0) )) then (
-   (n1 = (( -2147483648 ) + n2))) else (
-   true)) ) /\ ( (n1 = 0) /\ (n2 <> ( -2147483648 )) ) ) }
-  ensures {  ( ( (result = (Funciones__restar.restar n1 n2)) /\ (Funciones__restar.restar__function_guard result n1 n2) ) /\ ( (Standard__integer___axiom.dynamic_invariant result True False True True) /\ (result = (n1 - n2)) ) ) }
+ val dectohex16 
+   (n1 : int) : Standard__string.string
+  requires {  (n1 >= 0) }
+  ensures {  ( ( (result = (Funciones__dectohex16.dectohex16 n1)) /\ (Funciones__dectohex16.dectohex16__function_guard result n1) ) /\ (Standard__string___axiom.dynamic_invariant result True False True True) ) }
  
- axiom restar__post_axiom :
-  (forall n1   n2   : int [(Funciones__restar.restar n1 n2)].
-   ( ( ( (Standard__integer___axiom.dynamic_invariant n1 True True True True) /\ (Standard__integer___axiom.dynamic_invariant n2 True True True True) ) /\ ( ( (if (( (n1 > 0) /\ (n2 < 0) )) then (
-    (n1 = (2147483647 + n2))) else (
-    true)) /\ (if (( (n1 < 0) /\ (n2 > 0) )) then (
-    (n1 = (( -2147483648 ) + n2))) else (
-    true)) ) /\ ( (n1 = 0) /\ (n2 <> ( -2147483648 )) ) ) ) -> (let result = (Funciones__restar.restar n1 n2) in (
-    (if ((Funciones__restar.restar__function_guard result n1 n2)) then (
-     ( ( (result = (n1 - n2)) /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) /\ true )) else true)))
-    ))
-
-end
-
-(* Module for declaring a program function (and possibly an axiom) for "multiplicar" defined at funciones.ads:22, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
-module Funciones__multiplicar___axiom
- use import "_gnatprove_standard".Main
- use import "int".Int
- use        "_gnatprove_standard".Int_Division
- use        Standard__integer___axiom
- use        Funciones__multiplicar
-
- val multiplicar 
-   (n1 : int) (n2 : int) : int
-  requires {  ( ( ( ( ( (n2 > 0) /\ (n1 > 0) ) /\ (if (( (n1 > 0) /\ (n2 > 0) )) then (
-   (n1 = (Int_Division.div 2147483647 n2))) else (
-   true)) ) /\ (if (( (n1 < 0) /\ (n2 < 0) )) then (
-   (n1 = (Int_Division.div 2147483647 n2))) else (
-   true)) ) /\ (if (( (n1 < 0) /\ (n2 > 0) )) then (
-   ((Int_Division.div ( -2147483648 ) n2) = n1)) else (
-   true)) ) /\ (if (( (n1 > 0) /\ (n2 < 0) )) then (
-   ((Int_Division.div ( -2147483648 ) n1) = n2)) else (
-   true)) ) }
-  ensures {  ( ( (result = (Funciones__multiplicar.multiplicar n1 n2)) /\ (Funciones__multiplicar.multiplicar__function_guard result n1 n2) ) /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) }
- 
- axiom multiplicar__post_axiom :
-  (forall n1   n2   : int [(Funciones__multiplicar.multiplicar n1 n2)].
-   ( ( ( (Standard__integer___axiom.dynamic_invariant n1 True True True True) /\ (Standard__integer___axiom.dynamic_invariant n2 True True True True) ) /\ ( ( ( ( ( (n2 > 0) /\ (n1 > 0) ) /\ (if (( (n1 > 0) /\ (n2 > 0) )) then (
-    (n1 = (Int_Division.div 2147483647 n2))) else (
-    true)) ) /\ (if (( (n1 < 0) /\ (n2 < 0) )) then (
-    (n1 = (Int_Division.div 2147483647 n2))) else (
-    true)) ) /\ (if (( (n1 < 0) /\ (n2 > 0) )) then (
-    ((Int_Division.div ( -2147483648 ) n2) = n1)) else (
-    true)) ) /\ (if (( (n1 > 0) /\ (n2 < 0) )) then (
-    ((Int_Division.div ( -2147483648 ) n1) = n2)) else (
-    true)) ) ) -> (let result = (Funciones__multiplicar.multiplicar n1 n2) in (
-    (if ((Funciones__multiplicar.multiplicar__function_guard result n1 n2)) then (
-     ( ( true /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) /\ true )) else true)))
-    ))
-
-end
-
-(* Module for declaring a program function (and possibly an axiom) for "dividircociente" defined at funciones.ads:33, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
-module Funciones__dividircociente___axiom
- use import "_gnatprove_standard".Main
- use import "int".Int
- use        Standard__integer___axiom
- use        Funciones__dividircociente
-
- val dividircociente 
-   (n1 : int) (n2 : int) : int
-  requires {  ( ( (n1 > ( -2147483648 )) /\ (n1 < 2147483647) ) /\ ( ( (n2 > ( -2147483648 )) /\ (n2 < 2147483647) ) /\ (n2 <> 0) ) ) }
-  ensures {  ( ( (result = (Funciones__dividircociente.dividircociente n1 n2)) /\ (Funciones__dividircociente.dividircociente__function_guard result n1 n2) ) /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) }
- 
- axiom dividircociente__post_axiom :
-  (forall n1   n2   : int [(Funciones__dividircociente.dividircociente n1 n2)].
-   ( ( ( (Standard__integer___axiom.dynamic_invariant n1 True True True True) /\ (Standard__integer___axiom.dynamic_invariant n2 True True True True) ) /\ ( ( (n1 > ( -2147483648 )) /\ (n1 < 2147483647) ) /\ ( ( (n2 > ( -2147483648 )) /\ (n2 < 2147483647) ) /\ (n2 <> 0) ) ) ) -> (let result = (Funciones__dividircociente.dividircociente n1 n2) in (
-    (if ((Funciones__dividircociente.dividircociente__function_guard result n1 n2)) then (
-     ( ( true /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) /\ true )) else true)))
-    ))
-
-end
-
-(* Module for declaring a program function (and possibly an axiom) for "dividirresto" defined at funciones.ads:42, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
-module Funciones__dividirresto___axiom
- use import "_gnatprove_standard".Main
- use import "int".Int
- use        Standard__integer___axiom
- use        Funciones__dividirresto
-
- val dividirresto 
-   (n1 : int) (n2 : int) : int
-  requires {  ( ( (n1 > ( -2147483648 )) /\ (n1 < 2147483647) ) /\ ( ( (n2 > ( -2147483648 )) /\ (n2 < 2147483647) ) /\ (n2 <> 0) ) ) }
-  ensures {  ( ( (result = (Funciones__dividirresto.dividirresto n1 n2)) /\ (Funciones__dividirresto.dividirresto__function_guard result n1 n2) ) /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) }
- 
- axiom dividirresto__post_axiom :
-  (forall n1   n2   : int [(Funciones__dividirresto.dividirresto n1 n2)].
-   ( ( ( (Standard__integer___axiom.dynamic_invariant n1 True True True True) /\ (Standard__integer___axiom.dynamic_invariant n2 True True True True) ) /\ ( ( (n1 > ( -2147483648 )) /\ (n1 < 2147483647) ) /\ ( ( (n2 > ( -2147483648 )) /\ (n2 < 2147483647) ) /\ (n2 <> 0) ) ) ) -> (let result = (Funciones__dividirresto.dividirresto n1 n2) in (
-    (if ((Funciones__dividirresto.dividirresto__function_guard result n1 n2)) then (
-     ( ( true /\ (Standard__integer___axiom.dynamic_invariant result True False True True) ) /\ true )) else true)))
+ axiom dectohex16__post_axiom :
+  (forall n1   : int [(Funciones__dectohex16.dectohex16 n1)].
+   ( ( (Standard__integer___axiom.dynamic_invariant n1 True True True True) /\ (n1 >= 0) ) -> (let result = (Funciones__dectohex16.dectohex16 n1) in (
+    (if ((Funciones__dectohex16.dectohex16__function_guard result n1)) then (
+     ( ( true /\ (Standard__string___axiom.dynamic_invariant result True False True True) ) /\ true )) else true)))
     ))
 
 end
@@ -2614,6 +3404,18 @@ end
 (* Module for checking absence of run-time errors and package initial condition on package elaboration of "funciones" defined at funciones.ads:1, created in Gnat2Why.Subprograms.Generate_VCs_For_Package_Elaboration *)
 module Funciones__package_def
  use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Standard__string
+ use        Standard__string___axiom
+ use        Funciones__hex
+ use        Temp___String_Literal_154
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+ use        Standard__positive___axiom
+ use        Standard__character___axiom
+ use        Standard__string___axiom
+ use        Standard__integer___axiom
+ use        Funciones__hex___axiom
 
  let def #"funciones.ads" 1 0 0#"GP_Subp:funciones.ads:1" "W:diverges:N" 
    (__void_param : unit)
@@ -2621,359 +3423,280 @@ module Funciones__package_def
   ensures { #"funciones.ads" 1 0 0# true }
    =
   ( (#"funciones.ads" 1 0 0# ());
-  (#"funciones.ads" 3 0 0# ());
-  (#"funciones.ads" 9 0 0# ());
+  (#"funciones.ads" 3 0 0# ( #"funciones.ads" 3 0 0# abstract ensures {true}(let _ = (Standard__string.of_array((Temp___String_Literal_154.temp___String_Literal_154(()))) (1) (16)) in (
+   ()))
+   end ;
+  #"funciones.ads" 3 0 0# assume { #"funciones.ads" 3 0 0# (Standard__string___axiom.dynamic_invariant Funciones__hex.hex True False True True) } ));
+  (#"funciones.ads" 4 0 0# ());
   (#"funciones.ads" 5 0 0# ());
-  (#"funciones.ads" 12 0 0# ());
-  (#"funciones.ads" 20 0 0# ());
-  (#"funciones.ads" 14 0 0# ());
-  (#"funciones.ads" 22 0 0# ());
+  (#"funciones.ads" 6 0 0# ());
+  (#"funciones.ads" 15 0 0# ());
+  (#"funciones.ads" 17 0 0# ());
   (#"funciones.ads" 24 0 0# ());
-  (#"funciones.ads" 33 0 0# ());
-  (#"funciones.ads" 35 0 0# ());
-  (#"funciones.ads" 42 0 0# ());
-  (#"funciones.ads" 44 0 0# ());
+  (#"funciones.ads" 26 0 0# ());
+  (#"funciones.ads" 26 0 0# ());
+  (#"funciones.ads" 26 0 0# ());
+  (#"funciones.ads" 26 0 0# ());
+  (#"funciones.ads" 26 0 0# ());
+  (#"funciones.ads" 26 0 0# ());
   (#"funciones.adb" 1 0 0# ());
-  (#"funciones.adb" 3 0 0# ());
-  (#"funciones.adb" 14 0 0# ());
-  (#"funciones.adb" 25 0 0# ());
-  (#"funciones.adb" 61 0 0# ());
-  (#"funciones.adb" 94 0 0# ());
-  ( "GP_Sloc:funciones.adb:119:1" (#"funciones.adb" 119 0 0# ()) ) )
+  (#"funciones.adb" 85 0 0# ());
+  (#"funciones.adb" 139 0 0# ());
+  ( "GP_Sloc:funciones.adb:235:1" (#"funciones.adb" 235 0 0# ()) ) )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "sumar" defined at funciones.ads:3, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
-module Funciones__sumar__subprogram_def
+(* Module for defining the value of the aggregate at funciones.adb:95, created in Gnat2Why.Expr.Transform_Aggregate.Generate_Logic_Function *)
+module Temp_____aggregate_def_197___axiom
  use import "_gnatprove_standard".Main
- use import "int".Int
- use        "_gnatprove_standard".Boolean
- use        Standard__integer
- use        Standard__integer___axiom
- use        Funciones__sumar__n1
- use        Funciones__sumar__n2
- use        Funciones__sumar__result
- use        Standard__integer___axiom
- use        Standard__integer___axiom
- use        Funciones__sumar__result___axiom
- use        Funciones__sumar__n1___axiom
- use        Funciones__sumar__n2___axiom
+ use        Funciones__binary_values
+ use        Funciones__binary_values___axiom
+ use        Array__Int__Funciones__binary_values
+ use        Temp_____aggregate_def_197
+ use        Array__Int__Funciones__binary_values
 
- val funciones__sumar__result "model_projected" "model_trace:2858@result" "name:sumar"  : int__ref 
- 
- let def #"funciones.ads" 3 0 0#"W:diverges:N" "GP_Subp:funciones.ads:3" 
-   (__void_param : unit)
-  requires { #"funciones.ads" 3 0 0# true }
-  ensures { #"funciones.ads" 3 0 0# (#"funciones.ads" 9 0 0# ( "model_vc_post" "keep_on_simp" "GP_Sloc:funciones.ads:9:17" "GP_Reason:VC_POSTCONDITION" "GP_Id:4" "comment:        Post => sumar'Result = N1 + N2;
-                ^ funciones.ads:9:17:VC_POSTCONDITION" "GP_Shape:pragargs__cmp" ( "GP_Pretty_Ada:3285" "GP_Sloc:funciones.ads:9:17" (funciones__sumar__result.int__content = (Funciones__sumar__n1.n1 + Funciones__sumar__n2.n2)) ) )) }
-   =
-  ( () (* Assume dynamic invariants of inputs of the subprogram funciones.ads:3 *)
-  ;
-   assume {  (Standard__integer___axiom.dynamic_invariant Funciones__sumar__n1.n1 True False True True) };
-   assume {  (Standard__integer___axiom.dynamic_invariant Funciones__sumar__n2.n2 True False True True) };
-   assume {  true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram funciones.ads:3 *)
-  ;
-  () (* Check for RTE in the Pre of the subprogram funciones.ads:3 *)
-  ;
-   abstract ensures {true}(let _ = (Boolean.andb((if ((Boolean.andb((Funciones__sumar__n1.n1 >= 0)) ((Funciones__sumar__n2.n2 >= 0)))) then (
-   (Funciones__sumar__n1.n1 = (#"funciones.ads" 6 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.ads:6:40" "GP_Id:2" "comment:                     N1 = Integer'Last - N2)
-                                       ^ funciones.ads:6:40:VC_OVERFLOW_CHECK" "GP_Shape:pragargs__and__if__cmp__sub" (Standard__integer.range_check_((2147483647 - Funciones__sumar__n2.n2))) )))) else (
-   (Boolean.of_int(1))))) ((if ((Boolean.andb((Funciones__sumar__n1.n1 <= 0)) ((Funciones__sumar__n2.n2 <= 0)))) then (
-   (Funciones__sumar__n1.n1 = (#"funciones.ads" 8 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:pragargs__and__if__cmp__sub" "GP_Sloc:funciones.ads:8:41" "GP_Id:3" "comment:                     N1 = Integer'First - N2),
-                                        ^ funciones.ads:8:41:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((( -2147483648 ) - Funciones__sumar__n2.n2))) )))) else (
-   (Boolean.of_int(1)))))) in (
-   ()))
-   end ;
-  () (* Assume Pre of the subprogram funciones.ads:3 *)
-  ;
-   assume {  ( (if (( (Funciones__sumar__n1.n1 >= 0) /\ (Funciones__sumar__n2.n2 >= 0) )) then (
-   (Funciones__sumar__n1.n1 = (2147483647 - Funciones__sumar__n2.n2))) else (
-   true)) /\ (if (( (Funciones__sumar__n1.n1 <= 0) /\ (Funciones__sumar__n2.n2 <= 0) )) then (
-   (Funciones__sumar__n1.n1 = (( -2147483648 ) - Funciones__sumar__n2.n2))) else (
-   true)) ) };
-   try
-   ( (#"funciones.adb" 6 0 0# ( #"funciones.adb" 6 0 0# abstract ensures {true}(let _ = () in (
-    ()))
-    end ;
-   #"funciones.adb" 6 0 0# assume { #"funciones.adb" 6 0 0# (Standard__integer___axiom.default_initial_assumption Funciones__sumar__result.result__.int__content False) };
-   #"funciones.adb" 6 0 0# assume { #"funciones.adb" 6 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__sumar__result.result__.int__content False False True True) } ));
-   ( "GP_Sloc:funciones.adb:9:7" (#"funciones.adb" 9 0 0# ()) );
-   ( "GP_Sloc:funciones.adb:9:14" (#"funciones.adb" 9 0 0# #"funciones.adb" 9 0 0# Funciones__sumar__result.result__.int__content <- ( (#"funciones.adb" 9 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:9:20" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Id:0" "comment:      result := n1 + n2;
-                   ^ funciones.adb:9:20:VC_OVERFLOW_CHECK" "GP_Shape:result_assign__add" (Standard__integer.range_check_((Funciones__sumar__n1.n1 + Funciones__sumar__n2.n2))) )) )) );
-   ( "GP_Sloc:funciones.adb:11:14" (#"funciones.adb" 11 0 0# ()) );
-   ( "GP_Sloc:funciones.adb:11:7" (#"funciones.adb" 11 0 0# ( #"funciones.adb" 11 0 0# funciones__sumar__result.int__content <- ( Funciones__sumar__result.result__.int__content );
-   #"funciones.adb" 11 0 0# raise Return__exc )) );
-    raise Return__exc )
-  with
-   Return__exc -> ()
-  end;
-   abstract ensures {true}(let _ = (funciones__sumar__result.int__content = (#"funciones.ads" 9 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.ads:9:35" "GP_Id:1" "comment:        Post => sumar'Result = N1 + N2;
-                                  ^ funciones.ads:9:35:VC_OVERFLOW_CHECK" "GP_Shape:pragargs__cmp__add" (Standard__integer.range_check_((Funciones__sumar__n1.n1 + Funciones__sumar__n2.n2))) ))) in (
-   ()))
-   end ;
-  funciones__sumar__result.int__content )
+ axiom def_axiom :
+  (forall temp___199   : int.
+   (let temp___198 = (Temp_____aggregate_def_197.temp_____aggregate_def_197 temp___199) in (
+    (if ((Funciones__binary_values___axiom.dynamic_invariant temp___199 True True True True)) then (
+     (forall temp___200   : int.
+      ((Array__Int__Funciones__binary_values.get temp___198 temp___200) = ( 0 : Funciones__binary_values.binary_values )))) else true)))
+  )
+
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "restar" defined at funciones.ads:12, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
-module Funciones__restar__subprogram_def
- use import "_gnatprove_standard".Main
- use import "int".Int
- use        "_gnatprove_standard".Boolean
- use        Standard__integer
- use        Standard__integer___axiom
- use        Funciones__restar__n1
- use        Funciones__restar__n2
- use        Funciones__restar__result
- use        Standard__integer___axiom
- use        Standard__integer___axiom
- use        Funciones__restar__result___axiom
- use        Funciones__restar__n1___axiom
- use        Funciones__restar__n2___axiom
-
- val funciones__restar__result "model_projected" "model_trace:2931@result" "name:restar"  : int__ref 
- 
- let def #"funciones.ads" 12 0 0#"W:diverges:N" "GP_Subp:funciones.ads:12" 
-   (__void_param : unit)
-  requires { #"funciones.ads" 12 0 0# true }
-  ensures { #"funciones.ads" 12 0 0# (#"funciones.ads" 20 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__cmp" "GP_Sloc:funciones.ads:20:17" "GP_Id:9" "comment:        Post => restar'Result = N1 - N2;
-                ^ funciones.ads:20:17:VC_POSTCONDITION" ( "GP_Pretty_Ada:3358" "GP_Sloc:funciones.ads:20:17" (funciones__restar__result.int__content = (Funciones__restar__n1.n1 - Funciones__restar__n2.n2)) ) )) }
-   =
-  ( () (* Assume dynamic invariants of inputs of the subprogram funciones.ads:12 *)
-  ;
-   assume {  (Standard__integer___axiom.dynamic_invariant Funciones__restar__n1.n1 True False True True) };
-   assume {  (Standard__integer___axiom.dynamic_invariant Funciones__restar__n2.n2 True False True True) };
-   assume {  true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram funciones.ads:12 *)
-  ;
-  () (* Check for RTE in the Pre of the subprogram funciones.ads:12 *)
-  ;
-   abstract ensures {true}(let _ = (Boolean.andb((Boolean.andb((if ((Boolean.andb((Funciones__restar__n1.n1 > 0)) ((Funciones__restar__n2.n2 < 0)))) then (
-   (Funciones__restar__n1.n1 = (#"funciones.ads" 15 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.ads:15:40" "GP_Id:7" "comment:                     N1 = Integer'Last + N2)
-                                       ^ funciones.ads:15:40:VC_OVERFLOW_CHECK" "GP_Shape:pragargs__and__and__if__cmp__add" (Standard__integer.range_check_((2147483647 + Funciones__restar__n2.n2))) )))) else (
-   (Boolean.of_int(1))))) ((if ((Boolean.andb((Funciones__restar__n1.n1 < 0)) ((Funciones__restar__n2.n2 > 0)))) then (
-   (Funciones__restar__n1.n1 = (#"funciones.ads" 17 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:pragargs__and__and__if__cmp__add" "GP_Sloc:funciones.ads:17:41" "GP_Id:8" "comment:                     N1 = Integer'First + N2)
-                                        ^ funciones.ads:17:41:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((( -2147483648 ) + Funciones__restar__n2.n2))) )))) else (
-   (Boolean.of_int(1))))))) ((Boolean.andb((Funciones__restar__n1.n1 = 0)) ((Funciones__restar__n2.n2 <> ( -2147483648 )))))) in (
-   ()))
-   end ;
-  () (* Assume Pre of the subprogram funciones.ads:12 *)
-  ;
-   assume {  ( ( (if (( (Funciones__restar__n1.n1 > 0) /\ (Funciones__restar__n2.n2 < 0) )) then (
-   (Funciones__restar__n1.n1 = (2147483647 + Funciones__restar__n2.n2))) else (
-   true)) /\ (if (( (Funciones__restar__n1.n1 < 0) /\ (Funciones__restar__n2.n2 > 0) )) then (
-   (Funciones__restar__n1.n1 = (( -2147483648 ) + Funciones__restar__n2.n2))) else (
-   true)) ) /\ ( (Funciones__restar__n1.n1 = 0) /\ (Funciones__restar__n2.n2 <> ( -2147483648 )) ) ) };
-   try
-   ( (#"funciones.adb" 17 0 0# ( #"funciones.adb" 17 0 0# abstract ensures {true}(let _ = () in (
-    ()))
-    end ;
-   #"funciones.adb" 17 0 0# assume { #"funciones.adb" 17 0 0# (Standard__integer___axiom.default_initial_assumption Funciones__restar__result.result__.int__content False) };
-   #"funciones.adb" 17 0 0# assume { #"funciones.adb" 17 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__restar__result.result__.int__content False False True True) } ));
-   ( "GP_Sloc:funciones.adb:20:7" (#"funciones.adb" 20 0 0# ()) );
-   ( "GP_Sloc:funciones.adb:20:14" (#"funciones.adb" 20 0 0# #"funciones.adb" 20 0 0# Funciones__restar__result.result__.int__content <- ( (#"funciones.adb" 20 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:20:20" "GP_Id:5" "comment:      result := n1 - n2;
-                   ^ funciones.adb:20:20:VC_OVERFLOW_CHECK" "GP_Shape:result_assign__sub" (Standard__integer.range_check_((Funciones__restar__n1.n1 - Funciones__restar__n2.n2))) )) )) );
-   ( "GP_Sloc:funciones.adb:22:14" (#"funciones.adb" 22 0 0# ()) );
-   ( "GP_Sloc:funciones.adb:22:7" (#"funciones.adb" 22 0 0# ( #"funciones.adb" 22 0 0# funciones__restar__result.int__content <- ( Funciones__restar__result.result__.int__content );
-   #"funciones.adb" 22 0 0# raise Return__exc )) );
-    raise Return__exc )
-  with
-   Return__exc -> ()
-  end;
-   abstract ensures {true}(let _ = (funciones__restar__result.int__content = (#"funciones.ads" 20 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.ads:20:36" "GP_Id:6" "comment:        Post => restar'Result = N1 - N2;
-                                   ^ funciones.ads:20:36:VC_OVERFLOW_CHECK" "GP_Shape:pragargs__cmp__sub" (Standard__integer.range_check_((Funciones__restar__n1.n1 - Funciones__restar__n2.n2))) ))) in (
-   ()))
-   end ;
-  funciones__restar__result.int__content )
-end
-
-(* Module for checking contracts and absence of run-time errors in subprogram "multiplicar" defined at funciones.ads:22, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
-module Funciones__multiplicar__subprogram_def
+(* Module for checking contracts and absence of run-time errors in subprogram "dectobin" defined at funciones.ads:15, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Funciones__dectobin__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
  use        "_gnatprove_standard".Int_Division
- use        "_gnatprove_standard".Int_Abs
  use        "_gnatprove_standard".Boolean
  use        Standard__integer
  use        Standard__integer___axiom
- use        Standard__natural
- use        Funciones__multiplicar__n1
- use        Funciones__multiplicar__n2
- use        Funciones__multiplicar__r
- use        Funciones__multiplicar__c1
- use        Funciones__multiplicar__c2
- use        Funciones__multiplicar__L_1
+ use        Funciones__binary_values
+ use        Funciones__binary_values__rep
+ use        Array__Int__Funciones__binary_values
+ use        Funciones__ThbinarioD1
+ use        Funciones__hbinario___axiom
+ use        Funciones__dectobin__n1
+ use        Array__Int__Funciones__binary_values
+ use        Funciones__dectobin__res
+ use        Funciones__dectobin__pos
+ use        Funciones__dectobin__temp
+ use        Funciones__dectobin__L_1
+ use        Array__Int__Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
+ use        Temp_____aggregate_def_197
+ use        Array__Int__Funciones__binary_values
+ use        Array__Int__Funciones__binary_values
  use        Standard__integer___axiom
- use        Standard__natural___axiom
  use        Standard__integer___axiom
- use        Funciones__multiplicar__r___axiom
- use        Funciones__multiplicar__c1___axiom
- use        Funciones__multiplicar__c2___axiom
- use        Funciones__multiplicar__L_1___axiom
- use        Funciones__multiplicar__n1___axiom
- use        Funciones__multiplicar__n2___axiom
+ use        Funciones__dectobin__res___axiom
+ use        Funciones__dectobin__pos___axiom
+ use        Funciones__dectobin__temp___axiom
+ use        Temp_____aggregate_def_197___axiom
+ use        Funciones__dectobin__L_1___axiom
+ use        Funciones__binary_values___axiom
+ use        Funciones__hbinario___axiom
+ use        Funciones__dectobin__n1___axiom
+ use        Funciones__ThbinarioD1___axiom
 
- val funciones__multiplicar__result "model_projected" "model_trace:3014@result" "name:multiplicar"  : int__ref 
+ val funciones__dectobin__result "model_projected" "model_trace:2820@result" "name:DectoBin"  : Array__Int__Funciones__binary_values.map__ref 
  
- let def #"funciones.ads" 22 0 0#"W:diverges:N" "GP_Subp:funciones.ads:22" 
+ let def #"funciones.ads" 15 0 0#"W:diverges:N" "GP_Subp:funciones.ads:15" 
    (__void_param : unit)
-  requires { #"funciones.ads" 22 0 0# true }
-  ensures { #"funciones.ads" 22 0 0# true }
+  requires { #"funciones.ads" 15 0 0# true }
+  ensures { #"funciones.ads" 15 0 0# true }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram funciones.ads:22 *)
+  ( () (* Assume dynamic invariants of inputs of the subprogram funciones.ads:15 *)
   ;
-  #"funciones.ads" 22 0 0# assume { #"funciones.ads" 22 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__multiplicar__n1.n1 True False True True) };
-  #"funciones.ads" 22 0 0# assume { #"funciones.ads" 22 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__multiplicar__n2.n2 True False True True) };
-  #"funciones.ads" 22 0 0# assume { #"funciones.ads" 22 0 0# true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram funciones.ads:22 *)
+  #"funciones.ads" 15 0 0# assume { #"funciones.ads" 15 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dectobin__n1.n1 True False True True) };
+  #"funciones.ads" 15 0 0# assume { #"funciones.ads" 15 0 0# true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram funciones.ads:15 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram funciones.ads:22 *)
+  () (* Check for RTE in the Pre of the subprogram funciones.ads:15 *)
   ;
-  #"funciones.ads" 22 0 0# abstract ensures {true}(let _ = (Boolean.andb((Boolean.andb((Boolean.andb((Boolean.andb((Boolean.andb((Funciones__multiplicar__n2.n2 > 0)) ((Funciones__multiplicar__n1.n1 > 0)))) ((if ((Boolean.andb((Funciones__multiplicar__n1.n1 > 0)) ((Funciones__multiplicar__n2.n2 > 0)))) then (
-   (Funciones__multiplicar__n1.n1 = (#"funciones.ads" 26 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.ads:26:51" "GP_Reason:VC_DIVISION_CHECK" "GP_Id:22" "comment:     (if n1 > 0 and n2 > 0 then n1 = Integer'Last / n2) and
-                                                  ^ funciones.ads:26:51:VC_DIVISION_CHECK" "GP_Shape:pragargs__and__and__and__and__if__cmp__div" (Int_Division.div_(2147483647) (Funciones__multiplicar__n2.n2)) )))) else (
-   (Boolean.of_int(1))))))) ((if ((Boolean.andb((Funciones__multiplicar__n1.n1 < 0)) ((Funciones__multiplicar__n2.n2 < 0)))) then (
-   (Funciones__multiplicar__n1.n1 = (#"funciones.ads" 27 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.ads:27:51" "GP_Id:23" "comment:     (if n1 < 0 and n2 < 0 then n1 = Integer'Last / n2) and
-                                                  ^ funciones.ads:27:51:VC_DIVISION_CHECK" "GP_Shape:pragargs__and__and__and__if__cmp__div" (Int_Division.div_(2147483647) (Funciones__multiplicar__n2.n2)) )))) else (
-   (Boolean.of_int(1))))))) ((if ((Boolean.andb((Funciones__multiplicar__n1.n1 < 0)) ((Funciones__multiplicar__n2.n2 > 0)))) then (
-   ((#"funciones.ads" 28 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.ads:28:47" "GP_Shape:pragargs__and__and__if__cmp__div" "GP_Id:25" "comment:     (if n1 < 0 and n2 > 0 then Integer'First / n2 = n1) and
-                                              ^ funciones.ads:28:47:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((#"funciones.ads" 28 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.ads:28:47" "GP_Id:24" "comment:     (if n1 < 0 and n2 > 0 then Integer'First / n2 = n1) and
-                                              ^ funciones.ads:28:47:VC_DIVISION_CHECK" "GP_Shape:pragargs__and__and__if__cmp__div" (Int_Division.div_(( -2147483648 )) (Funciones__multiplicar__n2.n2)) )))) )) = Funciones__multiplicar__n1.n1)) else (
-   (Boolean.of_int(1))))))) ((if ((Boolean.andb((Funciones__multiplicar__n1.n1 > 0)) ((Funciones__multiplicar__n2.n2 < 0)))) then (
-   ((#"funciones.ads" 29 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.ads:29:47" "GP_Shape:pragargs__and__if__cmp__div" "GP_Id:27" "comment:     (if n1 > 0 and n2 < 0 then Integer'First / n1 = n2);
-                                              ^ funciones.ads:29:47:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((#"funciones.ads" 29 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.ads:29:47" "GP_Id:26" "comment:     (if n1 > 0 and n2 < 0 then Integer'First / n1 = n2);
-                                              ^ funciones.ads:29:47:VC_DIVISION_CHECK" "GP_Shape:pragargs__and__if__cmp__div" (Int_Division.div_(( -2147483648 )) (Funciones__multiplicar__n1.n1)) )))) )) = Funciones__multiplicar__n2.n2)) else (
-   (Boolean.of_int(1)))))) in (
+  #"funciones.ads" 15 0 0# abstract ensures {true}(let _ = (Funciones__dectobin__n1.n1 >= 0) in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram funciones.ads:22 *)
+  () (* Assume Pre of the subprogram funciones.ads:15 *)
   ;
-   assume {  ( ( ( ( ( (Funciones__multiplicar__n2.n2 > 0) /\ (Funciones__multiplicar__n1.n1 > 0) ) /\ (if (( (Funciones__multiplicar__n1.n1 > 0) /\ (Funciones__multiplicar__n2.n2 > 0) )) then (
-   (Funciones__multiplicar__n1.n1 = (Int_Division.div 2147483647 Funciones__multiplicar__n2.n2))) else (
-   true)) ) /\ (if (( (Funciones__multiplicar__n1.n1 < 0) /\ (Funciones__multiplicar__n2.n2 < 0) )) then (
-   (Funciones__multiplicar__n1.n1 = (Int_Division.div 2147483647 Funciones__multiplicar__n2.n2))) else (
-   true)) ) /\ (if (( (Funciones__multiplicar__n1.n1 < 0) /\ (Funciones__multiplicar__n2.n2 > 0) )) then (
-   ((Int_Division.div ( -2147483648 ) Funciones__multiplicar__n2.n2) = Funciones__multiplicar__n1.n1)) else (
-   true)) ) /\ (if (( (Funciones__multiplicar__n1.n1 > 0) /\ (Funciones__multiplicar__n2.n2 < 0) )) then (
-   ((Int_Division.div ( -2147483648 ) Funciones__multiplicar__n1.n1) = Funciones__multiplicar__n2.n2)) else (
-   true)) ) };
-   try
-   ( (#"funciones.adb" 28 0 0# ( #"funciones.adb" 28 0 0# Funciones__multiplicar__r.r.int__content <- ( 0 );
-   #"funciones.adb" 28 0 0# assume { #"funciones.adb" 28 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__multiplicar__r.r.int__content True False True True) } ));
-   (#"funciones.adb" 29 0 0# ( #"funciones.adb" 29 0 0# Funciones__multiplicar__c1.c1.int__content <- ( (#"funciones.adb" 29 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:29:23" "GP_Id:10" "comment:      c1 : Integer := abs(n1);
-                      ^ funciones.adb:29:23:VC_OVERFLOW_CHECK" "GP_Shape:c1_decl__abs" (Standard__integer.range_check_((Int_Abs.abs(Funciones__multiplicar__n1.n1)))) )) );
-    assume {  (Standard__integer___axiom.dynamic_invariant Funciones__multiplicar__c1.c1.int__content True False True True) } ));
-   (#"funciones.adb" 30 0 0# ( #"funciones.adb" 30 0 0# Funciones__multiplicar__c2.c2.int__content <- ( (#"funciones.adb" 30 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:30:23" "GP_Id:11" "comment:      c2 : Integer := abs(n2);
-                      ^ funciones.adb:30:23:VC_OVERFLOW_CHECK" "GP_Shape:c2_decl__abs" (Standard__integer.range_check_((Int_Abs.abs(Funciones__multiplicar__n2.n2)))) )) );
-    assume {  (Standard__integer___axiom.dynamic_invariant Funciones__multiplicar__c2.c2.int__content True False True True) } ));
-   (#"funciones.adb" 35 0 0# ());
-   ( "GP_Sloc:funciones.adb:35:20" (#"funciones.adb" 35 0 0# ( () (* Translation of an Ada loop from funciones.adb:35 *)
+  #"funciones.ads" 15 0 0# assume { #"funciones.ads" 15 0 0# (Funciones__dectobin__n1.n1 >= 0) };
+  #"funciones.ads" 15 0 0# try
+   ( (#"funciones.adb" 88 0 0# ( #"funciones.adb" 88 0 0# abstract ensures {true}(let _ = () in (
+    ()))
+    end ;
+   #"funciones.adb" 88 0 0# assume { #"funciones.adb" 88 0 0# (Funciones__hbinario___axiom.default_initial_assumption Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content False) };
+   #"funciones.adb" 88 0 0# assume { #"funciones.adb" 88 0 0# (Funciones__hbinario___axiom.dynamic_invariant Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content False False True True) } ));
+   (#"funciones.adb" 89 0 0# ( #"funciones.adb" 89 0 0# Funciones__dectobin__pos.pos.int__content <- ( 15 );
+   #"funciones.adb" 89 0 0# assume { #"funciones.adb" 89 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dectobin__pos.pos.int__content True False True True) } ));
+   (#"funciones.adb" 90 0 0# ( #"funciones.adb" 90 0 0# Funciones__dectobin__temp.temp.int__content <- ( Funciones__dectobin__n1.n1 );
+   #"funciones.adb" 90 0 0# assume { #"funciones.adb" 90 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dectobin__temp.temp.int__content True False True True) } ));
+   (#"funciones.adb" 97 0 0# ());
+   ( "GP_Sloc:funciones.adb:95:7" (#"funciones.adb" 95 0 0# ()) );
+   ( "GP_Sloc:funciones.adb:95:11" (#"funciones.adb" 95 0 0# #"funciones.adb" 95 0 0# Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content <- ( (Temp_____aggregate_def_197.temp_____aggregate_def_197(0)) )) );
+   ( "GP_Sloc:funciones.adb:97:22" (#"funciones.adb" 97 0 0# ( () (* Translation of an Ada loop from funciones.adb:97 *)
    ;
-   (if ((Funciones__multiplicar__c2.c2.int__content > 0)) then (
-    #"funciones.adb" 35 0 0# try
-     ( #"funciones.adb" 35 0 0# abstract ensures {true}(let _ = Funciones__multiplicar__r.r.int__content in (
+   (if ((Funciones__dectobin__pos.pos.int__content >= 0)) then (
+    #"funciones.adb" 97 0 0# try
+     ( #"funciones.adb" 97 0 0# abstract ensures {true}(let _ = Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content in (
       ()))
       end ;
-     (let temp___155 = #"funciones.adb" 35 0 0# (any int
-     ensures {#"funciones.adb" 35 0 0# (result = Funciones__multiplicar__r.r.int__content)} 
+     (let temp___203 = #"funciones.adb" 97 0 0# (any Array__Int__Funciones__binary_values.map
+     ensures {#"funciones.adb" 97 0 0# (result = Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content)} 
      ) in (
-      ( #"funciones.adb" 35 0 0# abstract ensures {true}(let _ = Funciones__multiplicar__c2.c2.int__content in (
+      ( #"funciones.adb" 97 0 0# abstract ensures {true}(let _ = Funciones__dectobin__temp.temp.int__content in (
        ()))
        end ;
-      (let temp___154 = #"funciones.adb" 35 0 0# (any int
-      ensures {#"funciones.adb" 35 0 0# (result = Funciones__multiplicar__c2.c2.int__content)} 
+      (let temp___202 = #"funciones.adb" 97 0 0# (any int
+      ensures {#"funciones.adb" 97 0 0# (result = Funciones__dectobin__temp.temp.int__content)} 
       ) in (
-       #"funciones.adb" 35 0 0# let temp___156 = { int__content = 0 } in 
-        ( () (* First unroling of the loop statements appearing before the loop invariant of loop funciones.adb:35 *)
-        ;
-        ( "GP_Sloc:funciones.adb:37:13" (#"funciones.adb" 37 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:37:35" (#"funciones.adb" 37 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:37:54" (#"funciones.adb" 37 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:37:10" (#"funciones.adb" 37 0 0# (if ((Boolean.andb((Boolean.of_int(1))) ((Funciones__multiplicar__c1.c1.int__content <= (#"funciones.adb" 37 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:37:53" "GP_Id:13" "comment:         if r <= integer'Last and c1 <= Integer'Last-r then
-                                                    ^ funciones.adb:37:53:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__if__and__cmp__sub" (Standard__integer.range_check_((2147483647 - Funciones__multiplicar__r.r.int__content))) )))))) then (
-         ( ( "GP_Sloc:funciones.adb:38:13" (#"funciones.adb" 38 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:38:18" (#"funciones.adb" 38 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:38:22" (#"funciones.adb" 38 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:38:15" (#"funciones.adb" 38 0 0# #"funciones.adb" 38 0 0# Funciones__multiplicar__r.r.int__content <- ( (#"funciones.adb" 38 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:38:20" "GP_Id:12" "comment:            r := r + c1;
-                   ^ funciones.adb:38:20:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__if__r_assign__add" (Standard__integer.range_check_((Funciones__multiplicar__r.r.int__content + Funciones__multiplicar__c1.c1.int__content))) )) )) ) )) else (
-         ( "GP_Sloc:funciones.adb:40:13" (#"funciones.adb" 40 0 0# #"funciones.adb" 40 0 0# raise Funciones__multiplicar__L_1.L_1) )))) );
-        ( "GP_Sloc:funciones.adb:43:10" (#"funciones.adb" 43 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:43:16" (#"funciones.adb" 43 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:43:13" (#"funciones.adb" 43 0 0# #"funciones.adb" 43 0 0# Funciones__multiplicar__c2.c2.int__content <- ( (#"funciones.adb" 43 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:43:19" "GP_Id:14" "comment:         c2 := c2 - 1;
-                  ^ funciones.adb:43:19:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__c2_assign__sub" (Standard__integer.range_check_((Funciones__multiplicar__c2.c2.int__content - 1))) )) )) );
-        () (* While loop translating the Ada loop from funciones.adb:35 *)
-        ;
-         while True do
-         invariant { 
-          (#"funciones.adb" 46 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:46:33" "GP_Reason:VC_LOOP_INVARIANT" "GP_Id:16" "comment:         pragma Loop_Invariant (c2 in 0 .. abs(n2));
-                                ^ funciones.adb:46:33:VC_LOOP_INVARIANT" "GP_Shape:L_1_while__pragargs__in" ( "GP_Pretty_Ada:2511" "GP_Sloc:funciones.adb:46:33" ( (0 <= Funciones__multiplicar__c2.c2.int__content) /\ (Funciones__multiplicar__c2.c2.int__content <= (Int_Abs.abs Funciones__multiplicar__n2.n2)) ) ) ))
-          }
-         invariant { 
-          (#"funciones.adb" 47 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Shape:L_1_while__pragargs__in" "GP_Sloc:funciones.adb:47:33" "GP_Id:18" "comment:         pragma Loop_Invariant (c1 in 0 .. abs(n1));
-                                ^ funciones.adb:47:33:VC_LOOP_INVARIANT" ( "GP_Pretty_Ada:2521" "GP_Sloc:funciones.adb:47:33" ( (0 <= Funciones__multiplicar__c1.c1.int__content) /\ (Funciones__multiplicar__c1.c1.int__content <= (Int_Abs.abs Funciones__multiplicar__n1.n1)) ) ) ))
-          }
-         invariant { 
-          (#"funciones.adb" 48 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Shape:L_1_while__pragargs__in" "GP_Sloc:funciones.adb:48:33" "GP_Id:19" "comment:         pragma Loop_Invariant (r in Natural);
-                                ^ funciones.adb:48:33:VC_LOOP_INVARIANT" ( "GP_Pretty_Ada:2531" "GP_Sloc:funciones.adb:48:33" (Standard__natural.in_range Funciones__multiplicar__r.r.int__content) ) ))
-          }
-         ( () (* Assume implicit invariants from the loop funciones.adb:35 *)
+       ( #"funciones.adb" 97 0 0# abstract ensures {true}(let _ = Funciones__dectobin__pos.pos.int__content in (
+        ()))
+        end ;
+       (let temp___201 = #"funciones.adb" 97 0 0# (any int
+       ensures {#"funciones.adb" 97 0 0# (result = Funciones__dectobin__pos.pos.int__content)} 
+       ) in (
+        #"funciones.adb" 97 0 0# let temp___205 = { int__content = 0 } in 
+         ( () (* First unroling of the loop statements appearing before the loop invariant of loop funciones.adb:97 *)
          ;
-          assume {  ( ( ( ( true /\ (Standard__integer___axiom.dynamic_invariant Funciones__multiplicar__c2.c2.int__content False True True True) ) /\ true ) /\ (Standard__integer___axiom.dynamic_invariant Funciones__multiplicar__r.r.int__content False True True True) ) /\ true ) };
-         () (* Check for absence of RTE in the invariant of loop funciones.adb:35 *)
+         ( "GP_Sloc:funciones.adb:98:13" (#"funciones.adb" 98 0 0# ()) );
+         ( "GP_Sloc:funciones.adb:98:10" (#"funciones.adb" 98 0 0# (if (((#"funciones.adb" 98 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Shape:L_1_while__if__cmp__rem" "GP_Sloc:funciones.adb:98:18" "GP_Id:4" "comment:         if temp rem 2 = 0 then
+                 ^ funciones.adb:98:18:VC_DIVISION_CHECK" (Int_Division.rem_(Funciones__dectobin__temp.temp.int__content) (2)) )) = 0)) then (
+          ( ( "GP_Sloc:funciones.adb:99:13" (#"funciones.adb" 99 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:99:17" (#"funciones.adb" 99 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:99:22" (#"funciones.adb" 99 0 0# #"funciones.adb" 99 0 0# Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content <- ( (Array__Int__Funciones__binary_values.set(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) (( #"funciones.adb" 99 0 0# assert { #"funciones.adb" 99 0 0# (#"funciones.adb" 99 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Shape:L_1_while__if__res_assign__ixdcomp" "GP_Sloc:funciones.adb:99:17" "GP_Id:3" "comment:            res(pos) := 0;
+                ^ funciones.adb:99:17:VC_INDEX_CHECK" ( (Funciones__ThbinarioD1.first <= Funciones__dectobin__pos.pos.int__content) /\ (Funciones__dectobin__pos.pos.int__content <= Funciones__ThbinarioD1.last) ) )) };
+          Funciones__dectobin__pos.pos.int__content )) (( 0 : Funciones__binary_values.binary_values ))) )) ) )) else (
+          ( "GP_Sloc:funciones.adb:100:10" (if (((#"funciones.adb" 100 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:100:21" "GP_Reason:VC_DIVISION_CHECK" "GP_Id:2" "comment:         elsif temp rem 2 = 1 then
+                    ^ funciones.adb:100:21:VC_DIVISION_CHECK" "GP_Shape:L_1_while__if__cmp__rem" (Int_Division.rem_(Funciones__dectobin__temp.temp.int__content) (2)) )) = 1)) then (
+           ( ( "GP_Sloc:funciones.adb:101:13" (#"funciones.adb" 101 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:101:17" (#"funciones.adb" 101 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:101:22" (#"funciones.adb" 101 0 0# #"funciones.adb" 101 0 0# Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content <- ( (Array__Int__Funciones__binary_values.set(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) (( #"funciones.adb" 101 0 0# assert { #"funciones.adb" 101 0 0# (#"funciones.adb" 101 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Shape:L_1_while__if__res_assign__ixdcomp" "GP_Sloc:funciones.adb:101:17" "GP_Id:1" "comment:            res(pos) := 1;
+                ^ funciones.adb:101:17:VC_INDEX_CHECK" ( (Funciones__ThbinarioD1.first <= Funciones__dectobin__pos.pos.int__content) /\ (Funciones__dectobin__pos.pos.int__content <= Funciones__ThbinarioD1.last) ) )) };
+           Funciones__dectobin__pos.pos.int__content )) (( 1 : Funciones__binary_values.binary_values ))) )) ) )) else (
+           ( "GP_Sloc:funciones.adb:102:10" (if ((Funciones__dectobin__temp.temp.int__content = 1)) then (
+            ( ( "GP_Sloc:funciones.adb:103:13" (#"funciones.adb" 103 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:103:17" (#"funciones.adb" 103 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:103:22" (#"funciones.adb" 103 0 0# #"funciones.adb" 103 0 0# Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content <- ( (Array__Int__Funciones__binary_values.set(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) (( #"funciones.adb" 103 0 0# assert { #"funciones.adb" 103 0 0# (#"funciones.adb" 103 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:103:17" "GP_Reason:VC_INDEX_CHECK" "GP_Id:0" "comment:            res(pos) := 1;
+                ^ funciones.adb:103:17:VC_INDEX_CHECK" "GP_Shape:L_1_while__if__res_assign__ixdcomp" ( (Funciones__ThbinarioD1.first <= Funciones__dectobin__pos.pos.int__content) /\ (Funciones__dectobin__pos.pos.int__content <= Funciones__ThbinarioD1.last) ) )) };
+            Funciones__dectobin__pos.pos.int__content )) (( 1 : Funciones__binary_values.binary_values ))) )) );
+            ( "GP_Sloc:funciones.adb:104:13" (#"funciones.adb" 104 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:104:18" (#"funciones.adb" 104 0 0# #"funciones.adb" 104 0 0# Funciones__dectobin__temp.temp.int__content <- ( 0 )) ) )) else (
+            ())) ))) )))) );
+         ( "GP_Sloc:funciones.adb:107:10" (#"funciones.adb" 107 0 0# ()) );
+         ( "GP_Sloc:funciones.adb:107:18" (#"funciones.adb" 107 0 0# ()) );
+         ( "GP_Sloc:funciones.adb:107:15" (#"funciones.adb" 107 0 0# #"funciones.adb" 107 0 0# Funciones__dectobin__temp.temp.int__content <- ( (#"funciones.adb" 107 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:107:23" "GP_Id:5" "comment:         temp := temp / 2;
+                      ^ funciones.adb:107:23:VC_DIVISION_CHECK" "GP_Shape:L_1_while__temp_assign__div" (Int_Division.div_(Funciones__dectobin__temp.temp.int__content) (2)) )) )) );
+         ( "GP_Sloc:funciones.adb:108:10" (#"funciones.adb" 108 0 0# ()) );
+         ( "GP_Sloc:funciones.adb:108:17" (#"funciones.adb" 108 0 0# ()) );
+         ( "GP_Sloc:funciones.adb:108:14" (#"funciones.adb" 108 0 0# #"funciones.adb" 108 0 0# Funciones__dectobin__pos.pos.int__content <- ( (#"funciones.adb" 108 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:108:21" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Id:6" "comment:         pos := pos - 1;
+                    ^ funciones.adb:108:21:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__pos_assign__sub" (Standard__integer.range_check_((Funciones__dectobin__pos.pos.int__content - 1))) )) )) );
+         () (* While loop translating the Ada loop from funciones.adb:97 *)
          ;
-          abstract ensures {true}(let _ = (Boolean.andb((0 <= Funciones__multiplicar__c2.c2.int__content)) ((Funciones__multiplicar__c2.c2.int__content <= (#"funciones.adb" 46 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:46:44" "GP_Id:15" "comment:         pragma Loop_Invariant (c2 in 0 .. abs(n2));
-                                           ^ funciones.adb:46:44:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__pragargs__in__range__abs" (Standard__integer.range_check_((Int_Abs.abs(Funciones__multiplicar__n2.n2)))) ))))) in (
-          ()))
-          end ;
-          abstract ensures {true}(let _ = (Boolean.andb((0 <= Funciones__multiplicar__c1.c1.int__content)) ((Funciones__multiplicar__c1.c1.int__content <= (#"funciones.adb" 47 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__pragargs__in__range__abs" "GP_Sloc:funciones.adb:47:44" "GP_Id:17" "comment:         pragma Loop_Invariant (c1 in 0 .. abs(n1));
-                                           ^ funciones.adb:47:44:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((Int_Abs.abs(Funciones__multiplicar__n1.n1)))) ))))) in (
-          ()))
-          end ;
-          abstract ensures {true}(let _ = (Standard__natural.in_range(Funciones__multiplicar__r.r.int__content)) in (
-          ()))
-          end ;
-          temp___156.int__content <- ( Funciones__multiplicar__c2.c2.int__content );
-         () (* Loop statements appearing after the loop invariant of loop funciones.adb:35 *)
-         ;
-         () (* Check for the exit condition and loop statements appearing before the loop invariant of loop funciones.adb:35 *)
-         ;
-         (if (not ( (Funciones__multiplicar__c2.c2.int__content > 0) )) then (
-           raise Funciones__multiplicar__L_1.L_1));
-         ( "GP_Sloc:funciones.adb:37:13" (#"funciones.adb" 37 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:37:35" (#"funciones.adb" 37 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:37:54" (#"funciones.adb" 37 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:37:10" (#"funciones.adb" 37 0 0# (if ((Boolean.andb((Boolean.of_int(1))) ((Funciones__multiplicar__c1.c1.int__content <= (#"funciones.adb" 37 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:37:53" "GP_Id:13" "comment:         if r <= integer'Last and c1 <= Integer'Last-r then
-                                                    ^ funciones.adb:37:53:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__if__and__cmp__sub" (Standard__integer.range_check_((2147483647 - Funciones__multiplicar__r.r.int__content))) )))))) then (
-          ( ( "GP_Sloc:funciones.adb:38:13" (#"funciones.adb" 38 0 0# ()) );
-          ( "GP_Sloc:funciones.adb:38:18" (#"funciones.adb" 38 0 0# ()) );
-          ( "GP_Sloc:funciones.adb:38:22" (#"funciones.adb" 38 0 0# ()) );
-          ( "GP_Sloc:funciones.adb:38:15" (#"funciones.adb" 38 0 0# #"funciones.adb" 38 0 0# Funciones__multiplicar__r.r.int__content <- ( (#"funciones.adb" 38 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:38:20" "GP_Id:12" "comment:            r := r + c1;
-                   ^ funciones.adb:38:20:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__if__r_assign__add" (Standard__integer.range_check_((Funciones__multiplicar__r.r.int__content + Funciones__multiplicar__c1.c1.int__content))) )) )) ) )) else (
-          ( "GP_Sloc:funciones.adb:40:13" (#"funciones.adb" 40 0 0# #"funciones.adb" 40 0 0# raise Funciones__multiplicar__L_1.L_1) )))) );
-         ( "GP_Sloc:funciones.adb:43:10" (#"funciones.adb" 43 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:43:16" (#"funciones.adb" 43 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:43:13" (#"funciones.adb" 43 0 0# #"funciones.adb" 43 0 0# Funciones__multiplicar__c2.c2.int__content <- ( (#"funciones.adb" 43 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:43:19" "GP_Id:14" "comment:         c2 := c2 - 1;
-                  ^ funciones.adb:43:19:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__c2_assign__sub" (Standard__integer.range_check_((Funciones__multiplicar__c2.c2.int__content - 1))) )) )) );
-          abstract ensures {true}(let _ =  abstract ensures {true}(let _ = Funciones__multiplicar__c2.c2.int__content in (
-          ()))
-          end  in (
-          ()))
-          end ;
-          check {  (#"funciones.adb" 45 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:45:10" "GP_Reason:VC_LOOP_VARIANT" "GP_Id:20" "comment:         pragma Loop_Variant (Decreases => c2);
-         ^ funciones.adb:45:10:VC_LOOP_VARIANT" "GP_Shape:L_1_while" (Funciones__multiplicar__c2.c2.int__content < temp___156.int__content) )) } )
-        done )))
+          while True do
+          invariant { 
+           (#"funciones.adb" 111 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:111:33" "GP_Reason:VC_LOOP_INVARIANT" "GP_Id:7" "comment:         pragma Loop_Invariant (pos in 0 .. 15);
+                                ^ funciones.adb:111:33:VC_LOOP_INVARIANT" "GP_Shape:L_1_while__pragargs__in" ( "GP_Pretty_Ada:2428" "GP_Sloc:funciones.adb:111:33" ( (0 <= Funciones__dectobin__pos.pos.int__content) /\ (Funciones__dectobin__pos.pos.int__content <= 15) ) ) ))
+           }
+          invariant { 
+           (#"funciones.adb" 112 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Sloc:funciones.adb:112:33" "GP_Id:10" "comment:         pragma Loop_Invariant ((for all a in reverse 0 .. pos => res(a) <= 0 or res(a) <= 1));
+                                ^ funciones.adb:112:33:VC_LOOP_INVARIANT" "GP_Shape:L_1_while__pragargs__forall" (forall a #"funciones.adb" 112 0 0#  "model" "model_trace:2436" "name:a"  : int.
+            ( ( (0 <= a) /\ (a <= Funciones__dectobin__pos.pos.int__content) ) -> ( "GP_Pretty_Ada:2453" "GP_Sloc:funciones.adb:112:67" ( ((Funciones__binary_values__rep.to_rep (Array__Int__Funciones__binary_values.get Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content a)) <= 0) \/ ((Funciones__binary_values__rep.to_rep (Array__Int__Funciones__binary_values.get Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content a)) <= 1) ) ) )) ))
+           }
+          invariant { 
+           (#"funciones.adb" 113 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Shape:L_1_while__pragargs__in" "GP_Sloc:funciones.adb:113:33" "GP_Id:11" "comment:         pragma Loop_Invariant (temp in 0 .. n1);
+                                ^ funciones.adb:113:33:VC_LOOP_INVARIANT" ( "GP_Pretty_Ada:2464" "GP_Sloc:funciones.adb:113:33" ( (0 <= Funciones__dectobin__temp.temp.int__content) /\ (Funciones__dectobin__temp.temp.int__content <= Funciones__dectobin__n1.n1) ) ) ))
+           }
+          ( () (* Assume implicit invariants from the loop funciones.adb:97 *)
+          ;
+           assume {  ( ( ( ( ( ( true /\ (Standard__integer___axiom.dynamic_invariant Funciones__dectobin__pos.pos.int__content False True True True) ) /\ true ) /\ (Standard__integer___axiom.dynamic_invariant Funciones__dectobin__temp.temp.int__content False True True True) ) /\ true ) /\ (Funciones__hbinario___axiom.dynamic_invariant Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content False True True True) ) /\ (forall temp___204   : int.
+           (if (( (Funciones__ThbinarioD1.first <= temp___204) /\ (temp___204 <= Funciones__ThbinarioD1.last) )) then (
+            (if (( false /\ ( false /\ false ) )) then (
+             ((Array__Int__Funciones__binary_values.get Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content temp___204) = (Array__Int__Funciones__binary_values.get temp___203 temp___204))) else (
+             true))) else true)) ) };
+          () (* Check for absence of RTE in the invariant of loop funciones.adb:97 *)
+          ;
+           abstract ensures {true}(let _ = (Boolean.andb((0 <= Funciones__dectobin__pos.pos.int__content)) ((Funciones__dectobin__pos.pos.int__content <= 15))) in (
+           ()))
+           end ;
+           abstract ensures {true}(let _ = ( (let a =  (any int
+          ) in (
+           (if ((Boolean.andb((0 <= a)) ((a <= Funciones__dectobin__pos.pos.int__content)))) then (
+             abstract ensures {true}(let _ = (Boolean.orb(((Funciones__binary_values__rep.to_rep((Array__Int__Funciones__binary_values.get(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) ((  assert {  (#"funciones.adb" 112 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Sloc:funciones.adb:112:71" "GP_Id:8" "comment:         pragma Loop_Invariant ((for all a in reverse 0 .. pos => res(a) <= 0 or res(a) <= 1));
+                                                                      ^ funciones.adb:112:71:VC_INDEX_CHECK" "GP_Shape:L_1_while__pragargs__forall__or__cmp__ixdcomp" ( (Funciones__ThbinarioD1.first <= a) /\ (a <= Funciones__ThbinarioD1.last) ) )) };
+            a ))))) <= 0)) (((Funciones__binary_values__rep.to_rep((Array__Int__Funciones__binary_values.get(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) ((  assert {  (#"funciones.adb" 112 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Shape:L_1_while__pragargs__forall__or__cmp__ixdcomp" "GP_Sloc:funciones.adb:112:86" "GP_Id:9" "comment:         pragma Loop_Invariant ((for all a in reverse 0 .. pos => res(a) <= 0 or res(a) <= 1));
+                                                                                     ^ funciones.adb:112:86:VC_INDEX_CHECK" ( (Funciones__ThbinarioD1.first <= a) /\ (a <= Funciones__ThbinarioD1.last) ) )) };
+            a ))))) <= 1))) in (
+             ()))
+             end ))))
+          ;
+           (any bool
+          requires { true} 
+          ensures { ( (result = True) <-> (forall a   "model" "model_trace:2436" "name:a"  : int.
+           ( ( (0 <= a) /\ (a <= Funciones__dectobin__pos.pos.int__content) ) -> ( ((Funciones__binary_values__rep.to_rep (Array__Int__Funciones__binary_values.get Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content a)) <= 0) \/ ((Funciones__binary_values__rep.to_rep (Array__Int__Funciones__binary_values.get Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content a)) <= 1) ) )) )} 
+          ) ) in (
+           ()))
+           end ;
+           abstract ensures {true}(let _ = (Boolean.andb((0 <= Funciones__dectobin__temp.temp.int__content)) ((Funciones__dectobin__temp.temp.int__content <= Funciones__dectobin__n1.n1))) in (
+           ()))
+           end ;
+           temp___205.int__content <- ( Funciones__dectobin__pos.pos.int__content );
+          () (* Loop statements appearing after the loop invariant of loop funciones.adb:97 *)
+          ;
+          () (* Check for the exit condition and loop statements appearing before the loop invariant of loop funciones.adb:97 *)
+          ;
+          (if (not ( (Funciones__dectobin__pos.pos.int__content >= 0) )) then (
+            raise Funciones__dectobin__L_1.L_1));
+          ( "GP_Sloc:funciones.adb:98:13" (#"funciones.adb" 98 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:98:10" (#"funciones.adb" 98 0 0# (if (((#"funciones.adb" 98 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Shape:L_1_while__if__cmp__rem" "GP_Sloc:funciones.adb:98:18" "GP_Id:4" "comment:         if temp rem 2 = 0 then
+                 ^ funciones.adb:98:18:VC_DIVISION_CHECK" (Int_Division.rem_(Funciones__dectobin__temp.temp.int__content) (2)) )) = 0)) then (
+           ( ( "GP_Sloc:funciones.adb:99:13" (#"funciones.adb" 99 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:99:17" (#"funciones.adb" 99 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:99:22" (#"funciones.adb" 99 0 0# #"funciones.adb" 99 0 0# Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content <- ( (Array__Int__Funciones__binary_values.set(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) (( #"funciones.adb" 99 0 0# assert { #"funciones.adb" 99 0 0# (#"funciones.adb" 99 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Shape:L_1_while__if__res_assign__ixdcomp" "GP_Sloc:funciones.adb:99:17" "GP_Id:3" "comment:            res(pos) := 0;
+                ^ funciones.adb:99:17:VC_INDEX_CHECK" ( (Funciones__ThbinarioD1.first <= Funciones__dectobin__pos.pos.int__content) /\ (Funciones__dectobin__pos.pos.int__content <= Funciones__ThbinarioD1.last) ) )) };
+           Funciones__dectobin__pos.pos.int__content )) (( 0 : Funciones__binary_values.binary_values ))) )) ) )) else (
+           ( "GP_Sloc:funciones.adb:100:10" (if (((#"funciones.adb" 100 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:100:21" "GP_Reason:VC_DIVISION_CHECK" "GP_Id:2" "comment:         elsif temp rem 2 = 1 then
+                    ^ funciones.adb:100:21:VC_DIVISION_CHECK" "GP_Shape:L_1_while__if__cmp__rem" (Int_Division.rem_(Funciones__dectobin__temp.temp.int__content) (2)) )) = 1)) then (
+            ( ( "GP_Sloc:funciones.adb:101:13" (#"funciones.adb" 101 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:101:17" (#"funciones.adb" 101 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:101:22" (#"funciones.adb" 101 0 0# #"funciones.adb" 101 0 0# Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content <- ( (Array__Int__Funciones__binary_values.set(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) (( #"funciones.adb" 101 0 0# assert { #"funciones.adb" 101 0 0# (#"funciones.adb" 101 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Shape:L_1_while__if__res_assign__ixdcomp" "GP_Sloc:funciones.adb:101:17" "GP_Id:1" "comment:            res(pos) := 1;
+                ^ funciones.adb:101:17:VC_INDEX_CHECK" ( (Funciones__ThbinarioD1.first <= Funciones__dectobin__pos.pos.int__content) /\ (Funciones__dectobin__pos.pos.int__content <= Funciones__ThbinarioD1.last) ) )) };
+            Funciones__dectobin__pos.pos.int__content )) (( 1 : Funciones__binary_values.binary_values ))) )) ) )) else (
+            ( "GP_Sloc:funciones.adb:102:10" (if ((Funciones__dectobin__temp.temp.int__content = 1)) then (
+             ( ( "GP_Sloc:funciones.adb:103:13" (#"funciones.adb" 103 0 0# ()) );
+             ( "GP_Sloc:funciones.adb:103:17" (#"funciones.adb" 103 0 0# ()) );
+             ( "GP_Sloc:funciones.adb:103:22" (#"funciones.adb" 103 0 0# #"funciones.adb" 103 0 0# Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content <- ( (Array__Int__Funciones__binary_values.set(Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content) (( #"funciones.adb" 103 0 0# assert { #"funciones.adb" 103 0 0# (#"funciones.adb" 103 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:103:17" "GP_Reason:VC_INDEX_CHECK" "GP_Id:0" "comment:            res(pos) := 1;
+                ^ funciones.adb:103:17:VC_INDEX_CHECK" "GP_Shape:L_1_while__if__res_assign__ixdcomp" ( (Funciones__ThbinarioD1.first <= Funciones__dectobin__pos.pos.int__content) /\ (Funciones__dectobin__pos.pos.int__content <= Funciones__ThbinarioD1.last) ) )) };
+             Funciones__dectobin__pos.pos.int__content )) (( 1 : Funciones__binary_values.binary_values ))) )) );
+             ( "GP_Sloc:funciones.adb:104:13" (#"funciones.adb" 104 0 0# ()) );
+             ( "GP_Sloc:funciones.adb:104:18" (#"funciones.adb" 104 0 0# #"funciones.adb" 104 0 0# Funciones__dectobin__temp.temp.int__content <- ( 0 )) ) )) else (
+             ())) ))) )))) );
+          ( "GP_Sloc:funciones.adb:107:10" (#"funciones.adb" 107 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:107:18" (#"funciones.adb" 107 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:107:15" (#"funciones.adb" 107 0 0# #"funciones.adb" 107 0 0# Funciones__dectobin__temp.temp.int__content <- ( (#"funciones.adb" 107 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:107:23" "GP_Id:5" "comment:         temp := temp / 2;
+                      ^ funciones.adb:107:23:VC_DIVISION_CHECK" "GP_Shape:L_1_while__temp_assign__div" (Int_Division.div_(Funciones__dectobin__temp.temp.int__content) (2)) )) )) );
+          ( "GP_Sloc:funciones.adb:108:10" (#"funciones.adb" 108 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:108:17" (#"funciones.adb" 108 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:108:14" (#"funciones.adb" 108 0 0# #"funciones.adb" 108 0 0# Funciones__dectobin__pos.pos.int__content <- ( (#"funciones.adb" 108 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:108:21" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Id:6" "comment:         pos := pos - 1;
+                    ^ funciones.adb:108:21:VC_OVERFLOW_CHECK" "GP_Shape:L_1_while__pos_assign__sub" (Standard__integer.range_check_((Funciones__dectobin__pos.pos.int__content - 1))) )) )) );
+           abstract ensures {true}(let _ =  abstract ensures {true}(let _ = Funciones__dectobin__pos.pos.int__content in (
+           ()))
+           end  in (
+           ()))
+           end ;
+           check {  (#"funciones.adb" 110 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:funciones.adb:110:10" "GP_Reason:VC_LOOP_VARIANT" "GP_Id:12" "comment:         pragma Loop_Variant (Decreases => pos);
+         ^ funciones.adb:110:10:VC_LOOP_VARIANT" "GP_Shape:L_1_while" (Funciones__dectobin__pos.pos.int__content < temp___205.int__content) )) } )
+         done )))
+        )))
        )))
       )
     with
-     Funciones__multiplicar__L_1.L_1 -> ()
+     Funciones__dectobin__L_1.L_1 -> ()
     end)) )) );
-   ( "GP_Sloc:funciones.adb:53:7" (#"funciones.adb" 53 0 0# (if ((Boolean.orb(( (Funciones__multiplicar__n1.n1 < 0) && (Funciones__multiplicar__n2.n2 < 0) )) (( (Funciones__multiplicar__n1.n1 > 0) && (Funciones__multiplicar__n2.n2 > 0) )))) then (
-    ( ( "GP_Sloc:funciones.adb:54:17" (#"funciones.adb" 54 0 0# ()) );
-    ( "GP_Sloc:funciones.adb:54:10" (#"funciones.adb" 54 0 0# ( #"funciones.adb" 54 0 0# funciones__multiplicar__result.int__content <- ( Funciones__multiplicar__r.r.int__content );
-    #"funciones.adb" 54 0 0# raise Return__exc )) ) )) else (
-    ( ( "GP_Sloc:funciones.adb:56:18" (#"funciones.adb" 56 0 0# ()) );
-    ( "GP_Sloc:funciones.adb:56:10" (#"funciones.adb" 56 0 0# ( #"funciones.adb" 56 0 0# funciones__multiplicar__result.int__content <- ( (#"funciones.adb" 56 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:56:17" "GP_Id:21" "comment:         return -r;
-                ^ funciones.adb:56:17:VC_OVERFLOW_CHECK" "GP_Shape:if__return__minus" (Standard__integer.range_check_((-(Funciones__multiplicar__r.r.int__content)))) )) );
-     raise Return__exc )) ) )))) );
+   ( "GP_Sloc:funciones.adb:116:14" (#"funciones.adb" 116 0 0# ()) );
+   ( "GP_Sloc:funciones.adb:116:7" (#"funciones.adb" 116 0 0# ( #"funciones.adb" 116 0 0# funciones__dectobin__result.Array__Int__Funciones__binary_values.map__content <- ( Funciones__dectobin__res.res.Array__Int__Funciones__binary_values.map__content );
+   #"funciones.adb" 116 0 0# raise Return__exc )) );
     raise Return__exc )
   with
    Return__exc -> ()
@@ -2981,173 +3704,372 @@ module Funciones__multiplicar__subprogram_def
    abstract ensures {true}(let _ = True in (
    ()))
    end ;
-  funciones__multiplicar__result.int__content )
+  funciones__dectobin__result.Array__Int__Funciones__binary_values.map__content )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "dividircociente" defined at funciones.ads:33, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
-module Funciones__dividircociente__subprogram_def
+(* Module for defining the value of the aggregate at funciones.adb:150, created in Gnat2Why.Expr.Transform_Aggregate.Generate_Logic_Function *)
+module Temp_____aggregate_def_207___axiom
+ use import "_gnatprove_standard".Main
+ use        Standard__character
+ use        Standard__character___axiom
+ use        Standard__character__rep
+ use        Array__Int__Standard__character
+ use        Temp_____aggregate_def_207
+ use        Array__Int__Standard__character
+
+ axiom def_axiom :
+  (forall temp___209   : int.
+   (let temp___208 = (Temp_____aggregate_def_207.temp_____aggregate_def_207 temp___209) in (
+    (if ((Standard__character___axiom.dynamic_invariant temp___209 True True True True)) then (
+     (forall temp___210   : int.
+      ((Standard__character__rep.to_rep (Array__Int__Standard__character.get temp___208 temp___210)) = temp___209))) else true)))
+  )
+
+end
+
+(* Module for checking contracts and absence of run-time errors in subprogram "dectohex16" defined at funciones.ads:24, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Funciones__dectohex16__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
- use        "_gnatprove_standard".Int_Abs
+ use        "_gnatprove_standard".Int_Division
  use        "_gnatprove_standard".Boolean
+ use        Standard__string
  use        Standard__integer
  use        Standard__integer___axiom
- use        Standard__natural
- use        Funciones__dividircociente__n1
- use        Funciones__dividircociente__n2
- use        Funciones__dividircociente__result
- use        Funciones__dividircociente__c1
- use        Funciones__dividircociente__c2
- use        Funciones__dividircociente__L_2
+ use        Standard__character
+ use        Standard__character___axiom
+ use        Standard__character__rep
+ use        Array__Int__Standard__character
+ use        Standard__string___axiom
+ use        Funciones__hex
+ use        Temp___String_Literal_154
+ use        Funciones__dectohex16__n1
+ use        Funciones__dectohex16__TTresSP1
+ use        Funciones__dectohex16__TresS___axiom
+ use        Array__Int__Standard__character
+ use        Funciones__dectohex16__res
+ use        Funciones__dectohex16__pos
+ use        Funciones__dectohex16__temp
+ use        Funciones__dectohex16__let
+ use        Funciones__dectohex16__L_2
+ use        Array__Int__Standard__character
+ use        Temp_____aggregate_def_207
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
+ use        Array__Int__Standard__character
  use        Standard__integer___axiom
- use        Standard__natural___axiom
+ use        Standard__positive___axiom
+ use        Standard__character___axiom
+ use        Standard__string___axiom
  use        Standard__integer___axiom
- use        Funciones__dividircociente__result___axiom
- use        Funciones__dividircociente__c1___axiom
- use        Funciones__dividircociente__c2___axiom
- use        Funciones__dividircociente__L_2___axiom
- use        Funciones__dividircociente__n1___axiom
- use        Funciones__dividircociente__n2___axiom
+ use        Funciones__dectohex16__res___axiom
+ use        Funciones__dectohex16__pos___axiom
+ use        Funciones__dectohex16__temp___axiom
+ use        Funciones__dectohex16__let___axiom
+ use        Temp_____aggregate_def_207___axiom
+ use        Funciones__dectohex16__L_2___axiom
+ use        Funciones__hex___axiom
+ use        Funciones__dectohex16__n1___axiom
+ use        Funciones__dectohex16__TresS___axiom
+ use        Funciones__dectohex16__TTresSP1___axiom
 
- val funciones__dividircociente__result "model_projected" "model_trace:3117@result" "name:dividirCociente"  : int__ref 
+ val funciones__dectohex16__result "model_projected" "model_trace:2846@result" "name:DectoHex16"  : Standard__string.string__ref 
  
- let def #"funciones.ads" 33 0 0#"W:diverges:N" "GP_Subp:funciones.ads:33" 
+ let def #"funciones.ads" 24 0 0#"W:diverges:N" "GP_Subp:funciones.ads:24" 
    (__void_param : unit)
-  requires { #"funciones.ads" 33 0 0# true }
-  ensures { #"funciones.ads" 33 0 0# true }
+  requires { #"funciones.ads" 24 0 0# true }
+  ensures { #"funciones.ads" 24 0 0# true }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram funciones.ads:33 *)
+  ( #"funciones.ads" 24 0 0# assume { #"funciones.ads" 24 0 0# (Standard__string___axiom.dynamic_invariant Funciones__hex.hex True False True True) };
+  (let temp___218 = (Standard__string.of_array (Temp___String_Literal_154.temp___String_Literal_154 ()) 1 16) in (
+   #"funciones.ads" 24 0 0# assume { #"funciones.ads" 24 0 0# (temp___218 = Funciones__hex.hex) }))
   ;
-  #"funciones.ads" 33 0 0# assume { #"funciones.ads" 33 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dividircociente__n1.n1 True False True True) };
-  #"funciones.ads" 33 0 0# assume { #"funciones.ads" 33 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dividircociente__n2.n2 True False True True) };
-  #"funciones.ads" 33 0 0# assume { #"funciones.ads" 33 0 0# true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram funciones.ads:33 *)
+  () (* Assume dynamic invariants of inputs of the subprogram funciones.ads:24 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram funciones.ads:33 *)
+  #"funciones.ads" 24 0 0# assume { #"funciones.ads" 24 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dectohex16__n1.n1 True False True True) };
+  #"funciones.ads" 24 0 0# assume { #"funciones.ads" 24 0 0# true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram funciones.ads:24 *)
   ;
-  #"funciones.ads" 33 0 0# abstract ensures {true}(let _ = (Boolean.andb((Boolean.andb((Funciones__dividircociente__n1.n1 > ( -2147483648 ))) ((Funciones__dividircociente__n1.n1 < 2147483647)))) ((Boolean.andb((Boolean.andb((Funciones__dividircociente__n2.n2 > ( -2147483648 ))) ((Funciones__dividircociente__n2.n2 < 2147483647)))) ((Funciones__dividircociente__n2.n2 <> 0))))) in (
+  () (* Check for RTE in the Pre of the subprogram funciones.ads:24 *)
+  ;
+  #"funciones.ads" 24 0 0# abstract ensures {true}(let _ = (Funciones__dectohex16__n1.n1 >= 0) in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram funciones.ads:33 *)
+  () (* Assume Pre of the subprogram funciones.ads:24 *)
   ;
-  #"funciones.ads" 33 0 0# assume { #"funciones.ads" 33 0 0# ( ( (Funciones__dividircociente__n1.n1 > ( -2147483648 )) /\ (Funciones__dividircociente__n1.n1 < 2147483647) ) /\ ( ( (Funciones__dividircociente__n2.n2 > ( -2147483648 )) /\ (Funciones__dividircociente__n2.n2 < 2147483647) ) /\ (Funciones__dividircociente__n2.n2 <> 0) ) ) };
-  #"funciones.ads" 33 0 0# try
-   ( (#"funciones.adb" 64 0 0# ( #"funciones.adb" 64 0 0# Funciones__dividircociente__result.result__.int__content <- ( 0 );
-   #"funciones.adb" 64 0 0# assume { #"funciones.adb" 64 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dividircociente__result.result__.int__content True False True True) } ));
-   (#"funciones.adb" 65 0 0# ( #"funciones.adb" 65 0 0# Funciones__dividircociente__c1.c1.int__content <- ( (#"funciones.adb" 65 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:c1_decl__abs" "GP_Sloc:funciones.adb:65:23" "GP_Id:28" "comment:      c1 : Integer := abs(n1);
-                      ^ funciones.adb:65:23:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividircociente__n1.n1)))) )) );
-    assume {  (Standard__integer___axiom.dynamic_invariant Funciones__dividircociente__c1.c1.int__content True False True True) } ));
-   (#"funciones.adb" 66 0 0# ( #"funciones.adb" 66 0 0# Funciones__dividircociente__c2.c2.int__content <- ( (#"funciones.adb" 66 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:c2_decl__abs" "GP_Sloc:funciones.adb:66:23" "GP_Id:29" "comment:      c2 : Integer := abs(n2);
-                      ^ funciones.adb:66:23:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividircociente__n2.n2)))) )) );
-    assume {  (Standard__integer___axiom.dynamic_invariant Funciones__dividircociente__c2.c2.int__content True False True True) } ));
-   (#"funciones.adb" 72 0 0# ());
-   ( "GP_Sloc:funciones.adb:70:10" (#"funciones.adb" 70 0 0# ()) );
-   ( "GP_Sloc:funciones.adb:70:7" (#"funciones.adb" 70 0 0# (if ((Funciones__dividircociente__c1.c1.int__content = 0)) then (
-    ( "GP_Sloc:funciones.adb:70:22" (#"funciones.adb" 70 0 0# ( #"funciones.adb" 70 0 0# funciones__dividircociente__result.int__content <- ( 0 );
-    #"funciones.adb" 70 0 0# raise Return__exc )) )) else (
-    ()))) );
-   ( "GP_Sloc:funciones.adb:72:22" (#"funciones.adb" 72 0 0# ( () (* Translation of an Ada loop from funciones.adb:72 *)
+  #"funciones.ads" 24 0 0# assume { #"funciones.ads" 24 0 0# (Funciones__dectohex16__n1.n1 >= 0) };
+  #"funciones.ads" 24 0 0# try
+   ( (#"funciones.adb" 142 0 0# ());
+   (#"funciones.adb" 142 0 0# ( #"funciones.adb" 142 0 0# abstract ensures {true}(let _ = () in (
+    ()))
+    end ;
+   #"funciones.adb" 142 0 0# assume { #"funciones.adb" 142 0 0# (Funciones__dectohex16__TresS___axiom.default_initial_assumption Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content False) };
+   #"funciones.adb" 142 0 0# assume { #"funciones.adb" 142 0 0# (Funciones__dectohex16__TresS___axiom.dynamic_invariant Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content False False True True) } ));
+   (#"funciones.adb" 143 0 0# ( #"funciones.adb" 143 0 0# Funciones__dectohex16__pos.pos.int__content <- ( 4 );
+   #"funciones.adb" 143 0 0# assume { #"funciones.adb" 143 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dectohex16__pos.pos.int__content True False True True) } ));
+   (#"funciones.adb" 144 0 0# ( #"funciones.adb" 144 0 0# Funciones__dectohex16__temp.temp.int__content <- ( Funciones__dectohex16__n1.n1 );
+   #"funciones.adb" 144 0 0# assume { #"funciones.adb" 144 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dectohex16__temp.temp.int__content True False True True) } ));
+   (#"funciones.adb" 145 0 0# ( #"funciones.adb" 145 0 0# abstract ensures {true}(let _ = () in (
+    ()))
+    end ;
+   #"funciones.adb" 145 0 0# assume { #"funciones.adb" 145 0 0# (Standard__character___axiom.default_initial_assumption Funciones__dectohex16__let.let__.int__content False) };
+   #"funciones.adb" 145 0 0# assume { #"funciones.adb" 145 0 0# (Standard__character___axiom.dynamic_invariant Funciones__dectohex16__let.let__.int__content False False True True) } ));
+   (#"funciones.adb" 152 0 0# ());
+   ( "GP_Sloc:funciones.adb:150:7" (#"funciones.adb" 150 0 0# ()) );
+   ( "GP_Sloc:funciones.adb:150:11" (#"funciones.adb" 150 0 0# #"funciones.adb" 150 0 0# Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content <- ( (Temp_____aggregate_def_207.temp_____aggregate_def_207(48)) )) );
+   ( "GP_Sloc:funciones.adb:152:22" (#"funciones.adb" 152 0 0# ( () (* Translation of an Ada loop from funciones.adb:152 *)
    ;
-   (if ((Funciones__dividircociente__c1.c1.int__content >= Funciones__dividircociente__c2.c2.int__content)) then (
-    #"funciones.adb" 72 0 0# try
-     ( #"funciones.adb" 72 0 0# abstract ensures {true}(let _ = Funciones__dividircociente__c1.c1.int__content in (
+   (if ((Funciones__dectohex16__pos.pos.int__content >= 1)) then (
+    #"funciones.adb" 152 0 0# try
+     ( #"funciones.adb" 152 0 0# abstract ensures {true}(let _ = Funciones__dectohex16__let.let__.int__content in (
       ()))
       end ;
-     (let temp___158 = #"funciones.adb" 72 0 0# (any int
-     ensures {#"funciones.adb" 72 0 0# (result = Funciones__dividircociente__c1.c1.int__content)} 
+     (let temp___215 = #"funciones.adb" 152 0 0# (any int
+     ensures {#"funciones.adb" 152 0 0# (result = Funciones__dectohex16__let.let__.int__content)} 
      ) in (
-      ( #"funciones.adb" 72 0 0# abstract ensures {true}(let _ = Funciones__dividircociente__result.result__.int__content in (
+      ( #"funciones.adb" 152 0 0# abstract ensures {true}(let _ = Funciones__dectohex16__temp.temp.int__content in (
        ()))
        end ;
-      (let temp___157 = #"funciones.adb" 72 0 0# (any int
-      ensures {#"funciones.adb" 72 0 0# (result = Funciones__dividircociente__result.result__.int__content)} 
+      (let temp___214 = #"funciones.adb" 152 0 0# (any int
+      ensures {#"funciones.adb" 152 0 0# (result = Funciones__dectohex16__temp.temp.int__content)} 
       ) in (
-       #"funciones.adb" 72 0 0# let temp___159 = { int__content = 0 } in 
-        ( () (* First unroling of the loop statements appearing before the loop invariant of loop funciones.adb:72 *)
-        ;
-        ( "GP_Sloc:funciones.adb:73:13" (#"funciones.adb" 73 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:73:10" (#"funciones.adb" 73 0 0# (if ((Funciones__dividircociente__result.result__.int__content < 2147483647)) then (
-         ( ( "GP_Sloc:funciones.adb:74:13" (#"funciones.adb" 74 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:74:23" (#"funciones.adb" 74 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:74:20" (#"funciones.adb" 74 0 0# #"funciones.adb" 74 0 0# Funciones__dividircociente__result.result__.int__content <- ( (#"funciones.adb" 74 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:74:30" "GP_Id:30" "comment:            result := result + 1;
-                             ^ funciones.adb:74:30:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__if__result_assign__add" (Standard__integer.range_check_((Funciones__dividircociente__result.result__.int__content + 1))) )) )) ) )) else (
-         ()))) );
-        ( "GP_Sloc:funciones.adb:76:10" (#"funciones.adb" 76 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:76:16" (#"funciones.adb" 76 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:76:21" (#"funciones.adb" 76 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:76:13" (#"funciones.adb" 76 0 0# #"funciones.adb" 76 0 0# Funciones__dividircociente__c1.c1.int__content <- ( (#"funciones.adb" 76 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:76:19" "GP_Id:31" "comment:         c1 := c1 - c2;
-                  ^ funciones.adb:76:19:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__c1_assign__sub" (Standard__integer.range_check_((Funciones__dividircociente__c1.c1.int__content - Funciones__dividircociente__c2.c2.int__content))) )) )) );
-        () (* While loop translating the Ada loop from funciones.adb:72 *)
-        ;
-         while True do
-         invariant { 
-          (#"funciones.adb" 79 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Sloc:funciones.adb:79:33" "GP_Id:33" "comment:         pragma Loop_Invariant (c1 in 0 .. abs(n1));
-                                ^ funciones.adb:79:33:VC_LOOP_INVARIANT" "GP_Shape:L_2_while__pragargs__in" ( "GP_Pretty_Ada:2663" "GP_Sloc:funciones.adb:79:33" ( (0 <= Funciones__dividircociente__c1.c1.int__content) /\ (Funciones__dividircociente__c1.c1.int__content <= (Int_Abs.abs Funciones__dividircociente__n1.n1)) ) ) ))
-          }
-         invariant { 
-          (#"funciones.adb" 80 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Shape:L_2_while__pragargs__in" "GP_Sloc:funciones.adb:80:33" "GP_Id:35" "comment:         pragma Loop_Invariant (c2 in 1 .. abs(n2));
-                                ^ funciones.adb:80:33:VC_LOOP_INVARIANT" ( "GP_Pretty_Ada:2673" "GP_Sloc:funciones.adb:80:33" ( (1 <= Funciones__dividircociente__c2.c2.int__content) /\ (Funciones__dividircociente__c2.c2.int__content <= (Int_Abs.abs Funciones__dividircociente__n2.n2)) ) ) ))
-          }
-         invariant { 
-          (#"funciones.adb" 81 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Shape:L_2_while__pragargs__in" "GP_Sloc:funciones.adb:81:33" "GP_Id:36" "comment:         pragma Loop_Invariant (result in Natural);
-                                ^ funciones.adb:81:33:VC_LOOP_INVARIANT" ( "GP_Pretty_Ada:2683" "GP_Sloc:funciones.adb:81:33" (Standard__natural.in_range Funciones__dividircociente__result.result__.int__content) ) ))
-          }
-         ( () (* Assume implicit invariants from the loop funciones.adb:72 *)
-         ;
-          assume {  ( ( ( ( true /\ (Standard__integer___axiom.dynamic_invariant Funciones__dividircociente__result.result__.int__content False True True True) ) /\ true ) /\ (Standard__integer___axiom.dynamic_invariant Funciones__dividircociente__c1.c1.int__content False True True True) ) /\ true ) };
-         () (* Check for absence of RTE in the invariant of loop funciones.adb:72 *)
-         ;
-          abstract ensures {true}(let _ = (Boolean.andb((0 <= Funciones__dividircociente__c1.c1.int__content)) ((Funciones__dividircociente__c1.c1.int__content <= (#"funciones.adb" 79 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:79:44" "GP_Id:32" "comment:         pragma Loop_Invariant (c1 in 0 .. abs(n1));
-                                           ^ funciones.adb:79:44:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__pragargs__in__range__abs" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividircociente__n1.n1)))) ))))) in (
-          ()))
-          end ;
-          abstract ensures {true}(let _ = (Boolean.andb((1 <= Funciones__dividircociente__c2.c2.int__content)) ((Funciones__dividircociente__c2.c2.int__content <= (#"funciones.adb" 80 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__pragargs__in__range__abs" "GP_Sloc:funciones.adb:80:44" "GP_Id:34" "comment:         pragma Loop_Invariant (c2 in 1 .. abs(n2));
-                                           ^ funciones.adb:80:44:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividircociente__n2.n2)))) ))))) in (
-          ()))
-          end ;
-          abstract ensures {true}(let _ = (Standard__natural.in_range(Funciones__dividircociente__result.result__.int__content)) in (
-          ()))
-          end ;
-          temp___159.int__content <- ( Funciones__dividircociente__c1.c1.int__content );
-         () (* Loop statements appearing after the loop invariant of loop funciones.adb:72 *)
-         ;
-         () (* Check for the exit condition and loop statements appearing before the loop invariant of loop funciones.adb:72 *)
-         ;
-         (if (not ( (Funciones__dividircociente__c1.c1.int__content >= Funciones__dividircociente__c2.c2.int__content) )) then (
-           raise Funciones__dividircociente__L_2.L_2));
-         ( "GP_Sloc:funciones.adb:73:13" (#"funciones.adb" 73 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:73:10" (#"funciones.adb" 73 0 0# (if ((Funciones__dividircociente__result.result__.int__content < 2147483647)) then (
-          ( ( "GP_Sloc:funciones.adb:74:13" (#"funciones.adb" 74 0 0# ()) );
-          ( "GP_Sloc:funciones.adb:74:23" (#"funciones.adb" 74 0 0# ()) );
-          ( "GP_Sloc:funciones.adb:74:20" (#"funciones.adb" 74 0 0# #"funciones.adb" 74 0 0# Funciones__dividircociente__result.result__.int__content <- ( (#"funciones.adb" 74 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:74:30" "GP_Id:30" "comment:            result := result + 1;
-                             ^ funciones.adb:74:30:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__if__result_assign__add" (Standard__integer.range_check_((Funciones__dividircociente__result.result__.int__content + 1))) )) )) ) )) else (
-          ()))) );
-         ( "GP_Sloc:funciones.adb:76:10" (#"funciones.adb" 76 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:76:16" (#"funciones.adb" 76 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:76:21" (#"funciones.adb" 76 0 0# ()) );
-         ( "GP_Sloc:funciones.adb:76:13" (#"funciones.adb" 76 0 0# #"funciones.adb" 76 0 0# Funciones__dividircociente__c1.c1.int__content <- ( (#"funciones.adb" 76 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:76:19" "GP_Id:31" "comment:         c1 := c1 - c2;
-                  ^ funciones.adb:76:19:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__c1_assign__sub" (Standard__integer.range_check_((Funciones__dividircociente__c1.c1.int__content - Funciones__dividircociente__c2.c2.int__content))) )) )) );
-          abstract ensures {true}(let _ =  abstract ensures {true}(let _ = Funciones__dividircociente__c1.c1.int__content in (
-          ()))
-          end  in (
-          ()))
-          end ;
-          check {  (#"funciones.adb" 78 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_VARIANT" "GP_Sloc:funciones.adb:78:10" "GP_Id:37" "comment:         pragma Loop_Variant (Decreases => c1);
-         ^ funciones.adb:78:10:VC_LOOP_VARIANT" "GP_Shape:L_2_while" (Funciones__dividircociente__c1.c1.int__content < temp___159.int__content) )) } )
-        done )))
+       ( #"funciones.adb" 152 0 0# abstract ensures {true}(let _ = Funciones__dectohex16__pos.pos.int__content in (
+        ()))
+        end ;
+       (let temp___213 = #"funciones.adb" 152 0 0# (any int
+       ensures {#"funciones.adb" 152 0 0# (result = Funciones__dectohex16__pos.pos.int__content)} 
+       ) in (
+        ( #"funciones.adb" 152 0 0# abstract ensures {true}(let _ = Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content in (
+         ()))
+         end ;
+        (let temp___211 = #"funciones.adb" 152 0 0# (any Array__Int__Standard__character.map
+        ensures {#"funciones.adb" 152 0 0# (result = Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content)} 
+        ) in (
+         #"funciones.adb" 152 0 0# let temp___216 = { int__content = 0 } in 
+          ( () (* First unroling of the loop statements appearing before the loop invariant of loop funciones.adb:152 *)
+          ;
+          ( "GP_Sloc:funciones.adb:154:15" (#"funciones.adb" 154 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:154:10" (#"funciones.adb" 154 0 0# (if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 0)) then (
+           ( ( "GP_Sloc:funciones.adb:155:23" (#"funciones.adb" 155 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:155:27" (#"funciones.adb" 155 0 0# #"funciones.adb" 155 0 0# Funciones__dectohex16__let.let__.int__content <- ( 48 )) ) )) else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 1)) then (
+           ( ( "GP_Sloc:funciones.adb:156:23" (#"funciones.adb" 156 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:156:27" (#"funciones.adb" 156 0 0# #"funciones.adb" 156 0 0# Funciones__dectohex16__let.let__.int__content <- ( 49 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 2)) then (
+           ( ( "GP_Sloc:funciones.adb:157:23" (#"funciones.adb" 157 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:157:27" (#"funciones.adb" 157 0 0# #"funciones.adb" 157 0 0# Funciones__dectohex16__let.let__.int__content <- ( 50 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 3)) then (
+           ( ( "GP_Sloc:funciones.adb:158:23" (#"funciones.adb" 158 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:158:27" (#"funciones.adb" 158 0 0# #"funciones.adb" 158 0 0# Funciones__dectohex16__let.let__.int__content <- ( 51 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 4)) then (
+           ( ( "GP_Sloc:funciones.adb:159:23" (#"funciones.adb" 159 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:159:27" (#"funciones.adb" 159 0 0# #"funciones.adb" 159 0 0# Funciones__dectohex16__let.let__.int__content <- ( 52 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 5)) then (
+           ( ( "GP_Sloc:funciones.adb:160:23" (#"funciones.adb" 160 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:160:27" (#"funciones.adb" 160 0 0# #"funciones.adb" 160 0 0# Funciones__dectohex16__let.let__.int__content <- ( 53 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 6)) then (
+           ( ( "GP_Sloc:funciones.adb:161:23" (#"funciones.adb" 161 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:161:27" (#"funciones.adb" 161 0 0# #"funciones.adb" 161 0 0# Funciones__dectohex16__let.let__.int__content <- ( 54 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 7)) then (
+           ( ( "GP_Sloc:funciones.adb:162:23" (#"funciones.adb" 162 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:162:27" (#"funciones.adb" 162 0 0# #"funciones.adb" 162 0 0# Funciones__dectohex16__let.let__.int__content <- ( 55 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 8)) then (
+           ( ( "GP_Sloc:funciones.adb:163:23" (#"funciones.adb" 163 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:163:27" (#"funciones.adb" 163 0 0# #"funciones.adb" 163 0 0# Funciones__dectohex16__let.let__.int__content <- ( 56 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 9)) then (
+           ( ( "GP_Sloc:funciones.adb:164:23" (#"funciones.adb" 164 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:164:27" (#"funciones.adb" 164 0 0# #"funciones.adb" 164 0 0# Funciones__dectohex16__let.let__.int__content <- ( 57 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 10)) then (
+           ( ( "GP_Sloc:funciones.adb:165:24" (#"funciones.adb" 165 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:165:28" (#"funciones.adb" 165 0 0# #"funciones.adb" 165 0 0# Funciones__dectohex16__let.let__.int__content <- ( 65 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 11)) then (
+           ( ( "GP_Sloc:funciones.adb:166:24" (#"funciones.adb" 166 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:166:28" (#"funciones.adb" 166 0 0# #"funciones.adb" 166 0 0# Funciones__dectohex16__let.let__.int__content <- ( 66 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 12)) then (
+           ( ( "GP_Sloc:funciones.adb:167:24" (#"funciones.adb" 167 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:167:28" (#"funciones.adb" 167 0 0# #"funciones.adb" 167 0 0# Funciones__dectohex16__let.let__.int__content <- ( 67 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 13)) then (
+           ( ( "GP_Sloc:funciones.adb:168:24" (#"funciones.adb" 168 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:168:28" (#"funciones.adb" 168 0 0# #"funciones.adb" 168 0 0# Funciones__dectohex16__let.let__.int__content <- ( 68 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 14)) then (
+           ( ( "GP_Sloc:funciones.adb:169:24" (#"funciones.adb" 169 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:169:28" (#"funciones.adb" 169 0 0# #"funciones.adb" 169 0 0# Funciones__dectohex16__let.let__.int__content <- ( 69 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 15)) then (
+           ( ( "GP_Sloc:funciones.adb:170:24" (#"funciones.adb" 170 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:170:28" (#"funciones.adb" 170 0 0# #"funciones.adb" 170 0 0# Funciones__dectohex16__let.let__.int__content <- ( 70 )) ) )) else (
+           ( ( "GP_Sloc:funciones.adb:172:28" (#"funciones.adb" 172 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:172:32" (#"funciones.adb" 172 0 0# #"funciones.adb" 172 0 0# Funciones__dectohex16__let.let__.int__content <- ( 48 )) ) )))) );
+          ( "GP_Sloc:funciones.adb:175:10" (#"funciones.adb" 175 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:175:14" (#"funciones.adb" 175 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:175:22" (#"funciones.adb" 175 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:175:19" (#"funciones.adb" 175 0 0# #"funciones.adb" 175 0 0# Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content <- ( (Array__Int__Standard__character.set(Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content) (( #"funciones.adb" 175 0 0# assert { #"funciones.adb" 175 0 0# (#"funciones.adb" 175 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Sloc:funciones.adb:175:14" "GP_Id:14" "comment:         res(pos) := let;
+             ^ funciones.adb:175:14:VC_INDEX_CHECK" "GP_Shape:L_2_while__res_assign__ixdcomp" ( (Funciones__dectohex16__TTresSP1.first <= Funciones__dectohex16__pos.pos.int__content) /\ (Funciones__dectohex16__pos.pos.int__content <= Funciones__dectohex16__TTresSP1.last) ) )) };
+          Funciones__dectohex16__pos.pos.int__content )) ((Standard__character__rep.of_rep(Funciones__dectohex16__let.let__.int__content)))) )) );
+          ( "GP_Sloc:funciones.adb:177:13" (#"funciones.adb" 177 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:177:10" (#"funciones.adb" 177 0 0# (if ((Funciones__dectohex16__temp.temp.int__content < 16)) then (
+           ( ( "GP_Sloc:funciones.adb:178:13" (#"funciones.adb" 178 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:178:18" (#"funciones.adb" 178 0 0# #"funciones.adb" 178 0 0# Funciones__dectohex16__temp.temp.int__content <- ( 0 )) ) )) else (
+           ()))) );
+          ( "GP_Sloc:funciones.adb:181:10" (#"funciones.adb" 181 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:181:18" (#"funciones.adb" 181 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:181:15" (#"funciones.adb" 181 0 0# #"funciones.adb" 181 0 0# Funciones__dectohex16__temp.temp.int__content <- ( (#"funciones.adb" 181 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:181:23" "GP_Id:15" "comment:         temp := temp / 16;
+                      ^ funciones.adb:181:23:VC_DIVISION_CHECK" "GP_Shape:L_2_while__temp_assign__div" (Int_Division.div_(Funciones__dectohex16__temp.temp.int__content) (16)) )) )) );
+          ( "GP_Sloc:funciones.adb:182:10" (#"funciones.adb" 182 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:182:17" (#"funciones.adb" 182 0 0# ()) );
+          ( "GP_Sloc:funciones.adb:182:14" (#"funciones.adb" 182 0 0# #"funciones.adb" 182 0 0# Funciones__dectohex16__pos.pos.int__content <- ( (#"funciones.adb" 182 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:182:21" "GP_Id:16" "comment:         pos := pos - 1;
+                    ^ funciones.adb:182:21:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__pos_assign__sub" (Standard__integer.range_check_((Funciones__dectohex16__pos.pos.int__content - 1))) )) )) );
+          () (* While loop translating the Ada loop from funciones.adb:152 *)
+          ;
+           while True do
+           invariant { 
+            (#"funciones.adb" 185 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Sloc:funciones.adb:185:33" "GP_Id:17" "comment:         pragma Loop_Invariant (pos in 1 .. 4);
+                                ^ funciones.adb:185:33:VC_LOOP_INVARIANT" "GP_Shape:L_2_while__pragargs__in" ( "GP_Pretty_Ada:2690" "GP_Sloc:funciones.adb:185:33" ( (1 <= Funciones__dectohex16__pos.pos.int__content) /\ (Funciones__dectohex16__pos.pos.int__content <= 4) ) ) ))
+            }
+           invariant { 
+            (#"funciones.adb" 186 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Shape:L_2_while__pragargs__in" "GP_Sloc:funciones.adb:186:33" "GP_Id:18" "comment:         pragma Loop_Invariant (temp in 0 .. n1);
+                                ^ funciones.adb:186:33:VC_LOOP_INVARIANT" ( "GP_Pretty_Ada:2699" "GP_Sloc:funciones.adb:186:33" ( (0 <= Funciones__dectohex16__temp.temp.int__content) /\ (Funciones__dectohex16__temp.temp.int__content <= Funciones__dectohex16__n1.n1) ) ) ))
+            }
+           invariant { 
+            (#"funciones.adb" 187 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Sloc:funciones.adb:187:33" "GP_Id:21" "comment:         pragma Loop_Invariant (for some x in reverse hex'Range => res(pos) <= hex(x));
+                                ^ funciones.adb:187:33:VC_LOOP_INVARIANT" "GP_Shape:L_2_while__pragargs__forsome" (exists x  : int.
+             ( ( ((Standard__string.first Funciones__hex.hex) <= x) /\ (x <= (Standard__string.last Funciones__hex.hex)) ) /\ ( "GP_Pretty_Ada:2721" "GP_Sloc:funciones.adb:187:68" ((Standard__character__rep.to_rep (Array__Int__Standard__character.get Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content Funciones__dectohex16__pos.pos.int__content)) <= (Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array Funciones__hex.hex) x))) ) )) ))
+            }
+           ( () (* Assume implicit invariants from the loop funciones.adb:152 *)
+           ;
+            assume {  ( ( ( ( ( ( ( ( true /\ (Funciones__dectohex16__TresS___axiom.dynamic_invariant Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content False True True True) ) /\ true ) /\ (Standard__integer___axiom.dynamic_invariant Funciones__dectohex16__pos.pos.int__content False True True True) ) /\ true ) /\ (Standard__integer___axiom.dynamic_invariant Funciones__dectohex16__temp.temp.int__content False True True True) ) /\ true ) /\ (Standard__character___axiom.dynamic_invariant Funciones__dectohex16__let.let__.int__content False True True True) ) /\ true ) };
+           () (* Check for absence of RTE in the invariant of loop funciones.adb:152 *)
+           ;
+            abstract ensures {true}(let _ = (Boolean.andb((1 <= Funciones__dectohex16__pos.pos.int__content)) ((Funciones__dectohex16__pos.pos.int__content <= 4))) in (
+            ()))
+            end ;
+            abstract ensures {true}(let _ = (Boolean.andb((0 <= Funciones__dectohex16__temp.temp.int__content)) ((Funciones__dectohex16__temp.temp.int__content <= Funciones__dectohex16__n1.n1))) in (
+            ()))
+            end ;
+            abstract ensures {true}(let _ = ( (let x =  (any int
+           ) in (
+            (if ((Boolean.andb(((  abstract ensures {true}(let _ = Funciones__hex.hex in (
+             ()))
+             end ;
+            (Standard__string.first(Funciones__hex.hex)) ) <= x)) ((x <= (  abstract ensures {true}(let _ = Funciones__hex.hex in (
+             ()))
+             end ;
+            (Standard__string.last(Funciones__hex.hex)) ))))) then (
+              abstract ensures {true}(let _ = ((Standard__character__rep.to_rep((Array__Int__Standard__character.get(Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content) ((  assert {  (#"funciones.adb" 187 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Sloc:funciones.adb:187:72" "GP_Id:19" "comment:         pragma Loop_Invariant (for some x in reverse hex'Range => res(pos) <= hex(x));
+                                                                       ^ funciones.adb:187:72:VC_INDEX_CHECK" "GP_Shape:L_2_while__pragargs__forsome__cmp__ixdcomp" ( (Funciones__dectohex16__TTresSP1.first <= Funciones__dectohex16__pos.pos.int__content) /\ (Funciones__dectohex16__pos.pos.int__content <= Funciones__dectohex16__TTresSP1.last) ) )) };
+             Funciones__dectohex16__pos.pos.int__content ))))) <= (Standard__character__rep.to_rep((Array__Int__Standard__character.get((Standard__string.to_array(Funciones__hex.hex))) ((  assert {  (#"funciones.adb" 187 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Shape:L_2_while__pragargs__forsome__cmp__ixdcomp" "GP_Sloc:funciones.adb:187:84" "GP_Id:20" "comment:         pragma Loop_Invariant (for some x in reverse hex'Range => res(pos) <= hex(x));
+                                                                                   ^ funciones.adb:187:84:VC_INDEX_CHECK" ( ((Standard__string.first Funciones__hex.hex) <= x) /\ (x <= (Standard__string.last Funciones__hex.hex)) ) )) };
+             x )))))) in (
+              ()))
+              end ))))
+           ;
+            (any bool
+           requires { true} 
+           ensures { ( (result = True) <-> (exists x  : int.
+            ( ( ((Standard__string.first Funciones__hex.hex) <= x) /\ (x <= (Standard__string.last Funciones__hex.hex)) ) /\ ((Standard__character__rep.to_rep (Array__Int__Standard__character.get Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content Funciones__dectohex16__pos.pos.int__content)) <= (Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array Funciones__hex.hex) x))) )) )} 
+           ) ) in (
+            ()))
+            end ;
+            temp___216.int__content <- ( Funciones__dectohex16__pos.pos.int__content );
+           () (* Loop statements appearing after the loop invariant of loop funciones.adb:152 *)
+           ;
+           () (* Check for the exit condition and loop statements appearing before the loop invariant of loop funciones.adb:152 *)
+           ;
+           (if (not ( (Funciones__dectohex16__pos.pos.int__content >= 1) )) then (
+             raise Funciones__dectohex16__L_2.L_2));
+           ( "GP_Sloc:funciones.adb:154:15" (#"funciones.adb" 154 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:154:10" (#"funciones.adb" 154 0 0# (if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 0)) then (
+            ( ( "GP_Sloc:funciones.adb:155:23" (#"funciones.adb" 155 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:155:27" (#"funciones.adb" 155 0 0# #"funciones.adb" 155 0 0# Funciones__dectohex16__let.let__.int__content <- ( 48 )) ) )) else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 1)) then (
+            ( ( "GP_Sloc:funciones.adb:156:23" (#"funciones.adb" 156 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:156:27" (#"funciones.adb" 156 0 0# #"funciones.adb" 156 0 0# Funciones__dectohex16__let.let__.int__content <- ( 49 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 2)) then (
+            ( ( "GP_Sloc:funciones.adb:157:23" (#"funciones.adb" 157 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:157:27" (#"funciones.adb" 157 0 0# #"funciones.adb" 157 0 0# Funciones__dectohex16__let.let__.int__content <- ( 50 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 3)) then (
+            ( ( "GP_Sloc:funciones.adb:158:23" (#"funciones.adb" 158 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:158:27" (#"funciones.adb" 158 0 0# #"funciones.adb" 158 0 0# Funciones__dectohex16__let.let__.int__content <- ( 51 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 4)) then (
+            ( ( "GP_Sloc:funciones.adb:159:23" (#"funciones.adb" 159 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:159:27" (#"funciones.adb" 159 0 0# #"funciones.adb" 159 0 0# Funciones__dectohex16__let.let__.int__content <- ( 52 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 5)) then (
+            ( ( "GP_Sloc:funciones.adb:160:23" (#"funciones.adb" 160 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:160:27" (#"funciones.adb" 160 0 0# #"funciones.adb" 160 0 0# Funciones__dectohex16__let.let__.int__content <- ( 53 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 6)) then (
+            ( ( "GP_Sloc:funciones.adb:161:23" (#"funciones.adb" 161 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:161:27" (#"funciones.adb" 161 0 0# #"funciones.adb" 161 0 0# Funciones__dectohex16__let.let__.int__content <- ( 54 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 7)) then (
+            ( ( "GP_Sloc:funciones.adb:162:23" (#"funciones.adb" 162 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:162:27" (#"funciones.adb" 162 0 0# #"funciones.adb" 162 0 0# Funciones__dectohex16__let.let__.int__content <- ( 55 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 8)) then (
+            ( ( "GP_Sloc:funciones.adb:163:23" (#"funciones.adb" 163 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:163:27" (#"funciones.adb" 163 0 0# #"funciones.adb" 163 0 0# Funciones__dectohex16__let.let__.int__content <- ( 56 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 9)) then (
+            ( ( "GP_Sloc:funciones.adb:164:23" (#"funciones.adb" 164 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:164:27" (#"funciones.adb" 164 0 0# #"funciones.adb" 164 0 0# Funciones__dectohex16__let.let__.int__content <- ( 57 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 10)) then (
+            ( ( "GP_Sloc:funciones.adb:165:24" (#"funciones.adb" 165 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:165:28" (#"funciones.adb" 165 0 0# #"funciones.adb" 165 0 0# Funciones__dectohex16__let.let__.int__content <- ( 65 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 11)) then (
+            ( ( "GP_Sloc:funciones.adb:166:24" (#"funciones.adb" 166 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:166:28" (#"funciones.adb" 166 0 0# #"funciones.adb" 166 0 0# Funciones__dectohex16__let.let__.int__content <- ( 66 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 12)) then (
+            ( ( "GP_Sloc:funciones.adb:167:24" (#"funciones.adb" 167 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:167:28" (#"funciones.adb" 167 0 0# #"funciones.adb" 167 0 0# Funciones__dectohex16__let.let__.int__content <- ( 67 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 13)) then (
+            ( ( "GP_Sloc:funciones.adb:168:24" (#"funciones.adb" 168 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:168:28" (#"funciones.adb" 168 0 0# #"funciones.adb" 168 0 0# Funciones__dectohex16__let.let__.int__content <- ( 68 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 14)) then (
+            ( ( "GP_Sloc:funciones.adb:169:24" (#"funciones.adb" 169 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:169:28" (#"funciones.adb" 169 0 0# #"funciones.adb" 169 0 0# Funciones__dectohex16__let.let__.int__content <- ( 69 )) ) ))  else if (((#"funciones.adb" 154 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:154:20" "GP_Id:13" "comment:         case temp rem 16 is
+                   ^ funciones.adb:154:20:VC_DIVISION_CHECK" "GP_Shape:L_2_while__case__rem" (Int_Division.rem_(Funciones__dectohex16__temp.temp.int__content) (16)) )) = 15)) then (
+            ( ( "GP_Sloc:funciones.adb:170:24" (#"funciones.adb" 170 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:170:28" (#"funciones.adb" 170 0 0# #"funciones.adb" 170 0 0# Funciones__dectohex16__let.let__.int__content <- ( 70 )) ) )) else (
+            ( ( "GP_Sloc:funciones.adb:172:28" (#"funciones.adb" 172 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:172:32" (#"funciones.adb" 172 0 0# #"funciones.adb" 172 0 0# Funciones__dectohex16__let.let__.int__content <- ( 48 )) ) )))) );
+           ( "GP_Sloc:funciones.adb:175:10" (#"funciones.adb" 175 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:175:14" (#"funciones.adb" 175 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:175:22" (#"funciones.adb" 175 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:175:19" (#"funciones.adb" 175 0 0# #"funciones.adb" 175 0 0# Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content <- ( (Array__Int__Standard__character.set(Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content) (( #"funciones.adb" 175 0 0# assert { #"funciones.adb" 175 0 0# (#"funciones.adb" 175 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_INDEX_CHECK" "GP_Sloc:funciones.adb:175:14" "GP_Id:14" "comment:         res(pos) := let;
+             ^ funciones.adb:175:14:VC_INDEX_CHECK" "GP_Shape:L_2_while__res_assign__ixdcomp" ( (Funciones__dectohex16__TTresSP1.first <= Funciones__dectohex16__pos.pos.int__content) /\ (Funciones__dectohex16__pos.pos.int__content <= Funciones__dectohex16__TTresSP1.last) ) )) };
+           Funciones__dectohex16__pos.pos.int__content )) ((Standard__character__rep.of_rep(Funciones__dectohex16__let.let__.int__content)))) )) );
+           ( "GP_Sloc:funciones.adb:177:13" (#"funciones.adb" 177 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:177:10" (#"funciones.adb" 177 0 0# (if ((Funciones__dectohex16__temp.temp.int__content < 16)) then (
+            ( ( "GP_Sloc:funciones.adb:178:13" (#"funciones.adb" 178 0 0# ()) );
+            ( "GP_Sloc:funciones.adb:178:18" (#"funciones.adb" 178 0 0# #"funciones.adb" 178 0 0# Funciones__dectohex16__temp.temp.int__content <- ( 0 )) ) )) else (
+            ()))) );
+           ( "GP_Sloc:funciones.adb:181:10" (#"funciones.adb" 181 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:181:18" (#"funciones.adb" 181 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:181:15" (#"funciones.adb" 181 0 0# #"funciones.adb" 181 0 0# Funciones__dectohex16__temp.temp.int__content <- ( (#"funciones.adb" 181 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_DIVISION_CHECK" "GP_Sloc:funciones.adb:181:23" "GP_Id:15" "comment:         temp := temp / 16;
+                      ^ funciones.adb:181:23:VC_DIVISION_CHECK" "GP_Shape:L_2_while__temp_assign__div" (Int_Division.div_(Funciones__dectohex16__temp.temp.int__content) (16)) )) )) );
+           ( "GP_Sloc:funciones.adb:182:10" (#"funciones.adb" 182 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:182:17" (#"funciones.adb" 182 0 0# ()) );
+           ( "GP_Sloc:funciones.adb:182:14" (#"funciones.adb" 182 0 0# #"funciones.adb" 182 0 0# Funciones__dectohex16__pos.pos.int__content <- ( (#"funciones.adb" 182 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:182:21" "GP_Id:16" "comment:         pos := pos - 1;
+                    ^ funciones.adb:182:21:VC_OVERFLOW_CHECK" "GP_Shape:L_2_while__pos_assign__sub" (Standard__integer.range_check_((Funciones__dectohex16__pos.pos.int__content - 1))) )) )) );
+            abstract ensures {true}(let _ =  abstract ensures {true}(let _ = Funciones__dectohex16__pos.pos.int__content in (
+            ()))
+            end  in (
+            ()))
+            end ;
+            check {  (#"funciones.adb" 184 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_VARIANT" "GP_Sloc:funciones.adb:184:10" "GP_Id:22" "comment:         pragma Loop_Variant (Decreases => pos);
+         ^ funciones.adb:184:10:VC_LOOP_VARIANT" "GP_Shape:L_2_while" (Funciones__dectohex16__pos.pos.int__content < temp___216.int__content) )) } )
+          done )))
+         )))
+        )))
        )))
       )
     with
-     Funciones__dividircociente__L_2.L_2 -> ()
+     Funciones__dectohex16__L_2.L_2 -> ()
     end)) )) );
-   ( "GP_Sloc:funciones.adb:84:7" (#"funciones.adb" 84 0 0# (if ((Boolean.orb(( (Funciones__dividircociente__n1.n1 < 0) && (Funciones__dividircociente__n2.n2 < 0) )) (( (Funciones__dividircociente__n1.n1 > 0) && (Funciones__dividircociente__n2.n2 > 0) )))) then (
-    ( ( "GP_Sloc:funciones.adb:85:17" (#"funciones.adb" 85 0 0# ()) );
-    ( "GP_Sloc:funciones.adb:85:10" (#"funciones.adb" 85 0 0# ( #"funciones.adb" 85 0 0# funciones__dividircociente__result.int__content <- ( Funciones__dividircociente__result.result__.int__content );
-    #"funciones.adb" 85 0 0# raise Return__exc )) ) )) else (
-    ( ( "GP_Sloc:funciones.adb:87:18" (#"funciones.adb" 87 0 0# ()) );
-    ( "GP_Sloc:funciones.adb:87:10" (#"funciones.adb" 87 0 0# ( #"funciones.adb" 87 0 0# funciones__dividircociente__result.int__content <- ( (#"funciones.adb" 87 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:if__return__minus" "GP_Sloc:funciones.adb:87:17" "GP_Id:38" "comment:         return -result;
-                ^ funciones.adb:87:17:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((-(Funciones__dividircociente__result.result__.int__content)))) )) );
-     raise Return__exc )) ) )))) );
+   ( "GP_Sloc:funciones.adb:191:14" (#"funciones.adb" 191 0 0# ()) );
+   ( "GP_Sloc:funciones.adb:191:7" (#"funciones.adb" 191 0 0# ( #"funciones.adb" 191 0 0# funciones__dectohex16__result.Standard__string.string__content <- ( (Standard__string.of_array(Funciones__dectohex16__res.res.Array__Int__Standard__character.map__content) (Funciones__dectohex16__TTresSP1.first) (Funciones__dectohex16__TTresSP1.last)) );
+   #"funciones.adb" 191 0 0# raise Return__exc )) );
     raise Return__exc )
   with
    Return__exc -> ()
@@ -3155,140 +4077,5 @@ module Funciones__dividircociente__subprogram_def
    abstract ensures {true}(let _ = True in (
    ()))
    end ;
-  funciones__dividircociente__result.int__content )
-end
-
-(* Module for checking contracts and absence of run-time errors in subprogram "dividirresto" defined at funciones.ads:42, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
-module Funciones__dividirresto__subprogram_def
- use import "_gnatprove_standard".Main
- use import "int".Int
- use        "_gnatprove_standard".Int_Abs
- use        "_gnatprove_standard".Boolean
- use        Standard__integer
- use        Standard__integer___axiom
- use        Funciones__dividirresto__n1
- use        Funciones__dividirresto__n2
- use        Funciones__dividirresto__c1
- use        Funciones__dividirresto__c2
- use        Funciones__dividirresto__L_3
- use        Standard__integer___axiom
- use        Standard__integer___axiom
- use        Funciones__dividirresto__c1___axiom
- use        Funciones__dividirresto__c2___axiom
- use        Funciones__dividirresto__L_3___axiom
- use        Funciones__dividirresto__n1___axiom
- use        Funciones__dividirresto__n2___axiom
-
- val funciones__dividirresto__result "model_projected" "model_trace:3176@result" "name:dividirResto"  : int__ref 
- 
- let def #"funciones.ads" 42 0 0#"W:diverges:N" "GP_Subp:funciones.ads:42" 
-   (__void_param : unit)
-  requires { #"funciones.ads" 42 0 0# true }
-  ensures { #"funciones.ads" 42 0 0# true }
-   =
-  ( () (* Assume dynamic invariants of inputs of the subprogram funciones.ads:42 *)
-  ;
-  #"funciones.ads" 42 0 0# assume { #"funciones.ads" 42 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dividirresto__n1.n1 True False True True) };
-  #"funciones.ads" 42 0 0# assume { #"funciones.ads" 42 0 0# (Standard__integer___axiom.dynamic_invariant Funciones__dividirresto__n2.n2 True False True True) };
-  #"funciones.ads" 42 0 0# assume { #"funciones.ads" 42 0 0# true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram funciones.ads:42 *)
-  ;
-  () (* Check for RTE in the Pre of the subprogram funciones.ads:42 *)
-  ;
-  #"funciones.ads" 42 0 0# abstract ensures {true}(let _ = (Boolean.andb((Boolean.andb((Funciones__dividirresto__n1.n1 > ( -2147483648 ))) ((Funciones__dividirresto__n1.n1 < 2147483647)))) ((Boolean.andb((Boolean.andb((Funciones__dividirresto__n2.n2 > ( -2147483648 ))) ((Funciones__dividirresto__n2.n2 < 2147483647)))) ((Funciones__dividirresto__n2.n2 <> 0))))) in (
-   ()))
-   end ;
-  () (* Assume Pre of the subprogram funciones.ads:42 *)
-  ;
-  #"funciones.ads" 42 0 0# assume { #"funciones.ads" 42 0 0# ( ( (Funciones__dividirresto__n1.n1 > ( -2147483648 )) /\ (Funciones__dividirresto__n1.n1 < 2147483647) ) /\ ( ( (Funciones__dividirresto__n2.n2 > ( -2147483648 )) /\ (Funciones__dividirresto__n2.n2 < 2147483647) ) /\ (Funciones__dividirresto__n2.n2 <> 0) ) ) };
-  #"funciones.ads" 42 0 0# try
-   ( (#"funciones.adb" 97 0 0# ( #"funciones.adb" 97 0 0# Funciones__dividirresto__c1.c1.int__content <- ( (#"funciones.adb" 97 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:c1_decl__abs" "GP_Sloc:funciones.adb:97:23" "GP_Id:39" "comment:      c1 : Integer := abs(n1);
-                      ^ funciones.adb:97:23:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividirresto__n1.n1)))) )) );
-    assume {  (Standard__integer___axiom.dynamic_invariant Funciones__dividirresto__c1.c1.int__content True False True True) } ));
-   (#"funciones.adb" 98 0 0# ( #"funciones.adb" 98 0 0# Funciones__dividirresto__c2.c2.int__content <- ( (#"funciones.adb" 98 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:c2_decl__abs" "GP_Sloc:funciones.adb:98:23" "GP_Id:40" "comment:      c2 : Integer := abs(n2);
-                      ^ funciones.adb:98:23:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividirresto__n2.n2)))) )) );
-    assume {  (Standard__integer___axiom.dynamic_invariant Funciones__dividirresto__c2.c2.int__content True False True True) } ));
-   (#"funciones.adb" 104 0 0# ());
-   ( "GP_Sloc:funciones.adb:102:10" (#"funciones.adb" 102 0 0# ()) );
-   ( "GP_Sloc:funciones.adb:102:7" (#"funciones.adb" 102 0 0# (if ((Funciones__dividirresto__c1.c1.int__content = 0)) then (
-    ( "GP_Sloc:funciones.adb:102:22" (#"funciones.adb" 102 0 0# ( #"funciones.adb" 102 0 0# funciones__dividirresto__result.int__content <- ( 0 );
-    #"funciones.adb" 102 0 0# raise Return__exc )) )) else (
-    ()))) );
-   ( "GP_Sloc:funciones.adb:104:22" (#"funciones.adb" 104 0 0# ( () (* Translation of an Ada loop from funciones.adb:104 *)
-   ;
-   (if ((Funciones__dividirresto__c1.c1.int__content >= Funciones__dividirresto__c2.c2.int__content)) then (
-    #"funciones.adb" 104 0 0# try
-     ( #"funciones.adb" 104 0 0# abstract ensures {true}(let _ = Funciones__dividirresto__c1.c1.int__content in (
-      ()))
-      end ;
-     (let temp___160 = #"funciones.adb" 104 0 0# (any int
-     ensures {#"funciones.adb" 104 0 0# (result = Funciones__dividirresto__c1.c1.int__content)} 
-     ) in (
-      #"funciones.adb" 104 0 0# let temp___161 = { int__content = 0 } in 
-       ( () (* First unroling of the loop statements appearing before the loop invariant of loop funciones.adb:104 *)
-       ;
-       ( "GP_Sloc:funciones.adb:106:10" (#"funciones.adb" 106 0 0# ()) );
-       ( "GP_Sloc:funciones.adb:106:16" (#"funciones.adb" 106 0 0# ()) );
-       ( "GP_Sloc:funciones.adb:106:21" (#"funciones.adb" 106 0 0# ()) );
-       ( "GP_Sloc:funciones.adb:106:13" (#"funciones.adb" 106 0 0# #"funciones.adb" 106 0 0# Funciones__dividirresto__c1.c1.int__content <- ( (#"funciones.adb" 106 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:106:19" "GP_Id:41" "comment:         c1 := c1 - c2;
-                  ^ funciones.adb:106:19:VC_OVERFLOW_CHECK" "GP_Shape:L_3_while__c1_assign__sub" (Standard__integer.range_check_((Funciones__dividirresto__c1.c1.int__content - Funciones__dividirresto__c2.c2.int__content))) )) )) );
-       () (* While loop translating the Ada loop from funciones.adb:104 *)
-       ;
-        while True do
-        invariant { 
-         (#"funciones.adb" 109 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Sloc:funciones.adb:109:33" "GP_Id:43" "comment:         pragma Loop_Invariant (c1 in 0 .. abs(n1));
-                                ^ funciones.adb:109:33:VC_LOOP_INVARIANT" "GP_Shape:L_3_while__pragargs__in" ( "GP_Pretty_Ada:2793" "GP_Sloc:funciones.adb:109:33" ( (0 <= Funciones__dividirresto__c1.c1.int__content) /\ (Funciones__dividirresto__c1.c1.int__content <= (Int_Abs.abs Funciones__dividirresto__n1.n1)) ) ) ))
-         }
-        invariant { 
-         (#"funciones.adb" 110 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_INVARIANT" "GP_Shape:L_3_while__pragargs__in" "GP_Sloc:funciones.adb:110:33" "GP_Id:45" "comment:         pragma Loop_Invariant (c2 in 1 .. abs(n2));
-                                ^ funciones.adb:110:33:VC_LOOP_INVARIANT" ( "GP_Pretty_Ada:2803" "GP_Sloc:funciones.adb:110:33" ( (1 <= Funciones__dividirresto__c2.c2.int__content) /\ (Funciones__dividirresto__c2.c2.int__content <= (Int_Abs.abs Funciones__dividirresto__n2.n2)) ) ) ))
-         }
-        ( () (* Assume implicit invariants from the loop funciones.adb:104 *)
-        ;
-         assume {  ( ( true /\ (Standard__integer___axiom.dynamic_invariant Funciones__dividirresto__c1.c1.int__content False True True True) ) /\ true ) };
-        () (* Check for absence of RTE in the invariant of loop funciones.adb:104 *)
-        ;
-         abstract ensures {true}(let _ = (Boolean.andb((0 <= Funciones__dividirresto__c1.c1.int__content)) ((Funciones__dividirresto__c1.c1.int__content <= (#"funciones.adb" 109 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:109:44" "GP_Id:42" "comment:         pragma Loop_Invariant (c1 in 0 .. abs(n1));
-                                           ^ funciones.adb:109:44:VC_OVERFLOW_CHECK" "GP_Shape:L_3_while__pragargs__in__range__abs" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividirresto__n1.n1)))) ))))) in (
-         ()))
-         end ;
-         abstract ensures {true}(let _ = (Boolean.andb((1 <= Funciones__dividirresto__c2.c2.int__content)) ((Funciones__dividirresto__c2.c2.int__content <= (#"funciones.adb" 110 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Shape:L_3_while__pragargs__in__range__abs" "GP_Sloc:funciones.adb:110:44" "GP_Id:44" "comment:         pragma Loop_Invariant (c2 in 1 .. abs(n2));
-                                           ^ funciones.adb:110:44:VC_OVERFLOW_CHECK" (Standard__integer.range_check_((Int_Abs.abs(Funciones__dividirresto__n2.n2)))) ))))) in (
-         ()))
-         end ;
-         temp___161.int__content <- ( Funciones__dividirresto__c1.c1.int__content );
-        () (* Loop statements appearing after the loop invariant of loop funciones.adb:104 *)
-        ;
-        () (* Check for the exit condition and loop statements appearing before the loop invariant of loop funciones.adb:104 *)
-        ;
-        (if (not ( (Funciones__dividirresto__c1.c1.int__content >= Funciones__dividirresto__c2.c2.int__content) )) then (
-          raise Funciones__dividirresto__L_3.L_3));
-        ( "GP_Sloc:funciones.adb:106:10" (#"funciones.adb" 106 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:106:16" (#"funciones.adb" 106 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:106:21" (#"funciones.adb" 106 0 0# ()) );
-        ( "GP_Sloc:funciones.adb:106:13" (#"funciones.adb" 106 0 0# #"funciones.adb" 106 0 0# Funciones__dividirresto__c1.c1.int__content <- ( (#"funciones.adb" 106 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_OVERFLOW_CHECK" "GP_Sloc:funciones.adb:106:19" "GP_Id:41" "comment:         c1 := c1 - c2;
-                  ^ funciones.adb:106:19:VC_OVERFLOW_CHECK" "GP_Shape:L_3_while__c1_assign__sub" (Standard__integer.range_check_((Funciones__dividirresto__c1.c1.int__content - Funciones__dividirresto__c2.c2.int__content))) )) )) );
-         abstract ensures {true}(let _ =  abstract ensures {true}(let _ = Funciones__dividirresto__c1.c1.int__content in (
-         ()))
-         end  in (
-         ()))
-         end ;
-         check {  (#"funciones.adb" 108 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_LOOP_VARIANT" "GP_Sloc:funciones.adb:108:10" "GP_Id:46" "comment:         pragma Loop_Variant (Decreases => c1);
-         ^ funciones.adb:108:10:VC_LOOP_VARIANT" "GP_Shape:L_3_while" (Funciones__dividirresto__c1.c1.int__content < temp___161.int__content) )) } )
-       done )))
-      )
-    with
-     Funciones__dividirresto__L_3.L_3 -> ()
-    end)) )) );
-   ( "GP_Sloc:funciones.adb:114:14" (#"funciones.adb" 114 0 0# ()) );
-   ( "GP_Sloc:funciones.adb:114:7" (#"funciones.adb" 114 0 0# ( #"funciones.adb" 114 0 0# funciones__dividirresto__result.int__content <- ( Funciones__dividirresto__c1.c1.int__content );
-   #"funciones.adb" 114 0 0# raise Return__exc )) );
-    raise Return__exc )
-  with
-   Return__exc -> ()
-  end;
-   abstract ensures {true}(let _ = True in (
-   ()))
-   end ;
-  funciones__dividirresto__result.int__content )
+  funciones__dectohex16__result.Standard__string.string__content )
 end

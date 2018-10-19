@@ -2,6 +2,11 @@ V "GNAT Lib v2018"
 A -x
 A ada
 A -gnatA
+A -gnato
+A -fstack-check
+A -g
+A -gnata
+A -gnat12
 A -gnatc
 P GP FX
 
@@ -11,55 +16,40 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U funciones%b		funciones.adb		a94e176b OO PK IL
+U funciones%b		funciones.adb		5416ac5e OO PK IL
 
-U funciones%s		funciones.ads		64ddd9dd OO PK IL
+U funciones%s		funciones.ads		ec8f17e9 OO PK IL
 
-D funciones.ads		20181018132338 64ddd9dd funciones%s
-D funciones.adb		20181018132742 cd93ceb6 funciones%b
-D system.ads		20180524051738 32a08138 system%s
+D funciones.ads		20181019121536 ec8f17e9 funciones%s
+D funciones.adb		20181019125558 b899bbb7 funciones%b
+D system.ads		20180525052301 4635ec04 system%s
 X 1 funciones.ads
-1K9*funciones 50l5 50e14 2|1b14 119l5 119t14
-3V13*sumar{integer} 3>20 3>34 9r17 2|3b13 12l8 12t13
-3i20 n1{integer} 5r20 6r22 7r23 8r22 9r32 2|3b20 9r17
-3i34 n2{integer} 5r32 6r42 7r35 8r43 9r37 2|3b34 9r22
-12V13*restar{integer} 12>21 12>35 20r17 2|14b13 23l8 23t14
-12i21 n1{integer} 14r20 15r22 16r23 17r22 18r20 20r33 2|14b21 20r17
-12i35 n2{integer} 14r31 15r42 16r34 17r43 18r31 20r38 2|14b35 20r22
-22V13*multiplicar{integer} 22>26 22>41 2|25b13 59l8 59t19
-22i26 n1{integer} 25r17 26r10 26r33 27r10 27r33 28r10 28r54 29r10 29r49 2|25b26
-. 29r27 47r48 53r11 53r39
-22i41 n2{integer} 25r6 26r21 26r53 27r21 27r53 28r21 28r49 29r21 29r54 2|25b41
-. 30r27 46r48 53r27 53r55
-33V13*dividirCociente{integer} 33>30 33>44 2|61b13 92l8 92t23
-33i30 n1{integer} 36r11 36r34 2|61b30 65r27 79r48 84r11 84r39
-33i44 n2{integer} 37r11 37r34 37r56 2|61b44 66r27 80r48 84r27 84r55
-42V13*dividirResto{integer} 42>27 42>41 2|94b13 115l8 115t20
-42i27 n1{integer} 45r11 45r34 2|94b27 97r27 109r48
-42i41 n2{integer} 46r11 46r34 46r56 2|94b41 98r27 110r48
+1K9*funciones 33l5 33e14 2|1b14 235l5 235t14
+3a4*hex{string} 2|187r55 187r80
+4I12*Binary_Values{integer} 5r39 6r40
+5A9*Binario(4I12)<integer>
+6A9*HBinario(4I12)<integer> 15r44 2|85r44 88r13
+15V13*DectoBin{6A9} 15>23 2|85b13 117l8 117t16
+15i23 n1{integer} 18r10 2|85b23 90r25 113r46
+24V13*DectoHex16{string} 24>25 2|139b13 192l8 192t18
+24i25 n1{integer} 27r10 2|139b25 144r25 186r46
 X 2 funciones.adb
-6i7 result{integer} 9m7 11r14
-17i7 result{integer} 20m7 22r14
-28i7 r{integer} 37r13 37r54 38m13 38r18 48r33 54r17 56r18
-29i7 c1{integer} 37r35 38r22 47r33
-30i7 c2{integer} 35r13 43m10 43r16 45r44 46r33
-64i7 result{integer} 73r13 74m13 74r23 81r33 85r17 87r18
-65i7 c1{integer} 70r10 72r13 76m10 76r16 78r44 79r33
-66i7 c2{integer} 72r19 76r21 80r33
-97i7 c1{integer} 102r10 104r13 106m10 106r16 108r44 109r33 114r14
-98i7 c2{integer} 104r19 106r21 110r33
+88a7 res{1|6A9} 95m7 99m13 101m13 103m13 112r67 112r82 116r14
+89i7 pos{integer} 97r13 99r17 101r17 103r17 108m10 108r17 110r44 111r33 112r60
+90i7 temp{integer} 98r13 100r16 102r16 104m13 107m10 107r18 113r33
+112i42 a{integer} 112r71 112r86
+142a7 res{string} 150m7 175m10 187r68 191r14
+143i7 pos{integer} 152r13 175r14 182m10 182r17 184r44 185r33 187r72
+144i7 temp{integer} 154r15 177r13 178m13 181m10 181r18 186r33
+145e7 let{character} 155m23 156m23 157m23 158m23 159m23 160m23 161m23 162m23
+. 163m23 164m23 165m24 166m24 167m24 168m24 169m24 170m24 172m28 175r22
+187i42 x{integer} 187r84
 
-QQ SPARKVERSION 2018 (20180523)
-GG EK_DIRECT_CALLS funciones__sumar 0
-GG EK_GLOBALS funciones__sumar local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
-GG EK_DIRECT_CALLS funciones__restar 0
-GG EK_GLOBALS funciones__restar local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
-GG EK_DIRECT_CALLS funciones__multiplicar 0
-GG EK_GLOBALS funciones__multiplicar local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
-GG EK_DIRECT_CALLS funciones__dividircociente 0
-GG EK_GLOBALS funciones__dividircociente local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
-GG EK_DIRECT_CALLS funciones__dividirresto 0
-GG EK_GLOBALS funciones__dividirresto local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+QQ SPARKVERSION 2018 (20180524)
+GG EK_DIRECT_CALLS funciones__dectobin 0
+GG EK_GLOBALS funciones__dectobin local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+GG EK_DIRECT_CALLS funciones__dectohex16 0
+GG EK_GLOBALS funciones__dectohex16 local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
 GG EK_DIRECT_CALLS funciones 0
 GG EK_GLOBALS funciones local FALSE E_PACKAGE TRUE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 initializes 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE FALSE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
 GG EK_END_MARKER

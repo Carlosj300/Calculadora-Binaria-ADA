@@ -1,132 +1,59 @@
 V "GNAT Lib v2018"
 M P W=b
 A -gnatA
+A -gnato
+A -fstack-check=specific
+A -g
+A -gnata
+A -gnat12
 A -mtune=generic
 A -march=x86-64
 P ZX
 
 RN
-RV NO_EXCEPTION_HANDLERS
-RV NO_EXCEPTIONS
 RV NO_IO
-RV NO_SECONDARY_STACK
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U main%b		main.adb		e13b7603 NE OO SU
+U main%b		main.adb		4fdf3f08 NE OO SU
 W ada%s			ada.ads			ada.ali
-Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W assertions%s		assertions.adb		assertions.ali
 W funciones%s		funciones.adb		funciones.ali
-Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
-D ada.ads		20180524051736 76789da1 ada%s
-D a-except.ads		20180524051736 291912d5 ada.exceptions%s
-D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
-D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
-D a-tags.ads		20180524051738 491b781d ada.tags%s
-D a-textio.ads		20180524051738 881db35a ada.text_io%s
-D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
-D assertions.ads	20181018084912 0573aace assertions%s
-D funciones.ads		20181018230620 a0e23360 funciones%s
-D interfac.ads		20180524051736 5ab55268 interfaces%s
-D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
-D main.adb		20181018230620 ccb75cf7 main%b
-D system.ads		20180524051738 32a08138 system%s
-D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
-D s-exctab.ads		20180524051738 54135002 system.exception_table%s
-D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
-D s-parame.ads		20180524051738 48ec542b system.parameters%s
-D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
-D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
-D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
-D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
-D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
-D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
-D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
-D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+D ada.ads		20180525052300 76789da1 ada%s
+D a-except.ads		20180525052301 291912d5 ada.exceptions%s
+D a-ioexce.ads		20180525052259 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180525052300 119b8fb3 ada.streams%s
+D a-tags.ads		20180525052302 491b781d ada.tags%s
+D a-textio.ads		20180525052302 881db35a ada.text_io%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D assertions.ads	20181019105108 0573aace assertions%s
+D funciones.ads		20181019121536 ec8f17e9 funciones%s
+D interfac.ads		20180525052300 5ab55268 interfaces%s
+D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
+D main.adb		20181019115135 2e3e3175 main%b
+D system.ads		20180525052301 4635ec04 system%s
+D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-ficobl.ads		20180525052302 078245e4 system.file_control_block%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180525052300 a7318a92 system.soft_links%s
+D s-stache.ads		20180525052302 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
 X 1 ada.ads
 16K9*Ada 20e8 12|3r6 3r23
 X 6 a-textio.ads
 49K13*Text_IO 471e16 12|3w10 3r27
-166U14*New_Line 12|287s4 291s4 295s4 299s4 303s4 307s4 311s4 315s4 319s4
-. 323s4 327s4
-263U14*Put_Line 12|28s10 30s10 55s10 57s10 81s10 83s10 107s10 109s10 133s10
-. 135s10 157s10 159s10 181s10 183s10 205s10 207s10 229s10 231s10 253s10 255s10
-. 277s10 279s10 285s4 289s4 293s4 297s4 301s4 305s4 309s4 313s4 317s4 321s4
-. 325s4
 X 8 assertions.ads
 1K9*Assertions 15e15 12|1w6 1r23
-2X4*Assertion_Error 12|27r12 54r12 80r12 106r12 132r12 156r12 180r12 204r12
-. 228r12 252r12 276r12
-10U14*Assert_True 12|17s7 18s7 19s7 20s7 21s7 22s7 44s7 45s7 46s7 47s7 48s7
-. 49s7 72s7 73s7 74s7 75s7 98s7 99s7 100s7 101s7 124s7 125s7 126s7 127s7
-. 149s7 150s7 151s7 173s7 174s7 175s7 197s7 198s7 199s7 221s7 222s7 223s7
-. 245s7 246s7 247s7 269s7 270s7 271s7
 X 9 funciones.ads
-1K9*funciones 70e14 12|2w6 2r23
-3I12*Binary_Values{integer}
-4A9*Binario(3I12)<integer> 12|142r12 143r12 144r12 166r12 167r12 168r12
-5A9*HBinario(3I12)<integer> 12|190r12 191r12 192r12 214r12 215r12 216r12
-8V13*sumar{integer} 12|17s19 18s19 19s19 20s19 21s19 22s19
-17V13*restar{integer} 12|44s19 45s19 46s19 47s19 48s19 49s19
-28V13*multiplicar{integer} 12|72s19 73s19 74s19 75s19
-38V13*dividirCociente{integer} 12|98s19 99s19 100s19 101s19
-45V13*dividirResto{integer} 12|124s19 125s19 126s19 127s19
-52V13*BintoHex32{string} 12|149s19 150s19 151s19
-55V13*Hex32toBin{4A9} 12|173s19 174s19 175s19
-58V13*DectoBin{5A9} 12|221s19 222s19 223s19
-61V13*BintoDec{integer} 12|197s19 198s19 199s19
-64V13*DectoHex16{string} 12|245s19 246s19 247s19
-67V13*Hex16toDec{integer} 12|269s19 270s19 271s19
+1K9*funciones 33e14 12|2w6 2r23
 X 12 main.adb
-5U11*Main 5b11 328l5 328t9
-7U14 Test_Sumar 7b14 32l8 32t18 286s4
-10i7 n1{integer} 17r25 17r28 20r25 21r25
-11i7 n2{integer} 18r25 18r28 20r28 22r25
-12i7 n3{integer} 19r25 19r28 21r28 22r28
-34U14 Test_Restar 34b14 59l8 59t19 290s4
-37i7 n1{integer} 44r26 44r29 47r26 48r26
-38i7 n2{integer} 45r26 45r29 47r29 49r26
-39i7 n3{integer} 46r26 46r29 48r29 49r29
-61U14 Test_Multiplicar 61b14 85l8 85t24 294s4
-64i7 n1{integer} 72r34 73r34
-65i7 n2{integer} 72r31 75r31
-66i7 n3{integer} 73r31 74r31
-67i7 n4{integer} 74r34 75r34
-87U14 Test_Dividir_Cociente 87b14 111l8 111t29 298s4
-90i7 n1{integer} 98r38 99r38
-91i7 n2{integer} 98r35 101r35
-92i7 n3{integer} 99r35 100r35
-93i7 n4{integer} 100r38 101r38
-113U14 Test_Dividir_Resto 113b14 137l8 137t26 302s4
-116i7 n1{integer} 124r35 125r35
-117i7 n2{integer} 124r32 127r32
-118i7 n3{integer} 125r32 126r32
-119i7 n4{integer} 126r35 127r35
-139U14 Test_Binario_A_Hexadecimal 139b14 161l8 161t34 306s4
-142a7 a1{9|4A9} 149r30
-143a7 a2{9|4A9} 150r30
-144a7 a3{9|4A9} 151r30
-163U14 Test_Hexadecimal_A_Binario 163b14 185l8 185t34 310s4
-166a7 a1{9|4A9} 173r44
-167a7 a2{9|4A9} 174r44
-168a7 a3{9|4A9} 175r44
-187U14 Test_Binario_A_Decimal 187b14 209l8 209t30 314s4
-190a7 a1{9|5A9} 197r28
-191a7 a2{9|5A9} 198r28
-192a7 a3{9|5A9} 199r28
-211U14 Test_Decimal_A_Binario 211b14 233l8 233t30 318s4
-214a7 a1{9|5A9} 221r37
-215a7 a2{9|5A9} 222r33
-216a7 a3{9|5A9} 223r37
-235U14 Test_Decimal_A_Hexadecimal 235b14 257l8 257t34 322s4
-238a7 s1{string} 245r39
-239a7 s2{string} 246r35
-240a7 s3{string} 247r39
-259U14 Test_Hexadecimal_A_Decimal 259b14 281l8 281t34 326s4
-262a7 s1{string} 269r30
-263a7 s2{string} 270r30
-264a7 s3{string} 271r30
+5U11*Main 5b11 178l5 178t9
 

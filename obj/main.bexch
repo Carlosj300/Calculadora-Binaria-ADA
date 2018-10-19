@@ -1,21 +1,21 @@
 [GENERATED OBJECT FILE]
 b__main.o
 [PROJECT FILES]
-C:\Users\soyyo\Desktop\Calculador\default.gpr
-20181018075544
+/home/alex222en/Documentos/GitHub/Calculadora-Binaria-ADA/default.gpr
+20181019105108
 [BOUND OBJECT FILES]
-C:\Users\soyyo\Desktop\Calculador\obj\assertions.o
-C:\Users\soyyo\Desktop\Calculador\obj\funciones.o
-C:\Users\soyyo\Desktop\Calculador\obj\main.o
+/home/alex222en/Documentos/GitHub/Calculadora-Binaria-ADA/obj/assertions.o
+/home/alex222en/Documentos/GitHub/Calculadora-Binaria-ADA/obj/funciones.o
+/home/alex222en/Documentos/GitHub/Calculadora-Binaria-ADA/obj/main.o
 [GENERATED SOURCE FILES]
 b__main.ads
 b__main.adb
 b__main.ali
 [RESULTING OPTIONS]
--LC:\Users\soyyo\Desktop\Calculador\obj\
--LC:\Users\soyyo\Desktop\Calculador\obj\
--LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
+-L/home/alex222en/Documentos/GitHub/Calculadora-Binaria-ADA/obj/
+-L/home/alex222en/Documentos/GitHub/Calculadora-Binaria-ADA/obj/
+-L/home/alex222en/GNAT/2018/lib/gcc/x86_64-pc-linux-gnu/7.3.1/adalib/
 -static
 -static-libgcc
-C:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
--Wl,--stack=0x2000000
+/home/alex222en/GNAT/2018/lib/gcc/x86_64-pc-linux-gnu/7.3.1/adalib/libgnat.a
+-ldl
